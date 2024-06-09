@@ -1,12 +1,6 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - OscarPindaro
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - OscarPindaro/MiniJam152_Heroes
+  - OscarPindaro/GodotWildJam63
