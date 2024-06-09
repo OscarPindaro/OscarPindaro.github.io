@@ -1,25 +1,21 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: oscar.pindaro@gmail.com
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: oscar_e_shirley.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+  more_info: 
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+Sono un ingegnere informatico con una formazione in Artificial Intelligence e Ottimizzazione Matematica. La mia passione per questi argomenti mi spinge a volerli esplorare più a fondo, e ho deciso che un blog è il modo migliore per farlo. Sono stato ispirato da [3blue1Brown](https://www.youtube.com/c/3blue1brown) e spero di poter contribuire anch'io alla divulgazione matematica.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Faccio parte della Wauhaus, un gruppo di amici con cui partecipiamo a Game Jams. In queste competizioni dobbiamo sviluppare un gioco funzionante in pochissimo tempo. Vorrei condividere le nostre esperienze e magari ispirare qualcun altro a fare lo stesso.

@@ -1,16 +1,16 @@
 ---
 layout: page
 title: submenus
-nav: true
+nav: false
 nav_order: 8
 dropdown: true
 children:
-  - title: publications
-    permalink: /publications/
-  - title: divider
-  - title: projects
+  # - title: Pubblicazioni
+  #   permalink: /pubblicazioni/
+  # - title: divider
+  - title: Progetti
     permalink: /projects/
   - title: divider
-  - title: blog
+  - title: Blog
     permalink: /blog/
 ---
