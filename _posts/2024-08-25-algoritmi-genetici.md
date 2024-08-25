@@ -1,0 +1,144 @@
+---
+layout: post
+title: Algoritmi Genetici e le 8 regine
+date: 2024-08-25 18:00:00
+description: Modellare utilizzando algoritmi genetici, applicato al problema delle 8 regine
+tags: matematica code
+categories: sample-posts
+featured: true
+---
+
+## Introduzione
+
+Gli algoritmi genetici sono una classe di algoritmi utilizzati per prototipizzare rapidamente soluzioni a problemi complessi.
+Il loro funzionamento si ispira al processo di selezione naturale,in cui gli individui di una popolazione continuano a cambiare e a riprodursi.
+Solo gli individui più adatti riescono a sopravvivere.
+
+Godono di grande popolarità, in quanto il loro funzionamento è molto intuitivo e sono molto semplici da progettare e implementare. 
+Infatti, permettono di prototipare rapidamente soluzioni di qualità discreta a problemi più o meno difficili.  
+
+Per spiegare il loro funzionamento, userò come esempio il problema delle 8 regine.
+
+## Problema delle 8 regine
+
+[Il problema delle 8 regine](https://it.wikipedia.org/wiki/Rompicapo_delle_otto_regine#:~:text=Il%20rompicapo%20\(o%20problema\)%20delle,i%20movimenti%20standard%20della%20regina.) è un puzzle  che consiste nel posizionare 8 regine su una scacchierra 8x8 senza che nessuna di queste minacci le altre. 
+La "difficoltà" del problema consiste nel fatto che le regine minacciano gli altri pezzi che si trovano sulla stessa riga, colonna o diagonali.
+Tradizionalmente il problema viene risolto utilizzando un algoritmo Depth-First Search (DFS) di backtracking. 
+
+<div class="row mt-3">
+    {% include figure.liquid loading="eager" path="/assets/gif/gen_alg_eight_queens/QueenAttacking_ManimCE_v0.18.1.gif" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption" style="font-size: 18px; font-style: italic;">
+    La regina è un pezzo molto aggressivo. Può attaccare in orizzontale, verticale e diagonale e muoversi di quanti passi vuole.
+</div>
+
+In DFS, le regine vengono posizionate una alla volta, in maniera tale che l'ultima regina non minacci nessuna delle precedenti, fino a quando non si trova una soluzione o non è possibile posizionare una regina. In questo ultimo caso, l'ultima mossa viene annullata, e si prova in maniera ricorsiva a cambiare le posizioni delle precedenti regine fino alla risoluzione. Questo algoritmo è basato su *state space search (ricerca nello spazio di stato)*, in cui vengono provate tutte le possibili configurazioni. 
+
+Il problema delle 8 regine può essere generalizzato a N regine su una scacchiera NxN. La complessità del problema cresce però esponenzialmente, e il problema diventa computazionalmente intrattabile con DFS.
+
+## Componenti di un algoritmo genetico
+
+Gli algoritmi genetici considerano possibili **soluzioni** ad un problema come individui in una popolazione. 
+In questo caso, la parola **soluzione** non assume il significato classico di **risoluzione**, ovvero quella soluzione che risolve il problema.
+Ha invece una accezione molto più ampia: è infatti un qualsiasi assegnamento alle variabili del problema.
+Esistono quindi soluzioni di qualità più o meno alta, ammissibili e inammisibili, e l'obiettivo dell'algoritmo genetico è quello di trovare una soluzione di qualità abbastanza alta (possibilmente la migliore).
+
+In un algoritmo genetico, gli individui possono mutare spontaneamente o riprodursi l'un l'altro. Tuttavia, solo gli individui migliori riescono a sopravvivere e a generare "soluzioni" figlie di qualità sempre migliori.
+
+I componenti di un algoritmo genetico sono:
+* La funziona di fitness
+* La rappresentazione delle soluzione
+* La mutazione
+* Il crossover
+* La popolazione
+
+### Funzione di Fitness
+
+La funziona di Fitness è una funzione che assegna un punteggio ad una particolare soluzione.
+Questa funzione può essere complicata a piacere, contenere penalizzazioni per alcuni casi patologici o forti premi per caratteristiche desiderabili.
+
+La funzione di fitness ha un effetto molto importante su quanto una soluzione riesca a sopravvivere tra una generazione e l'altra. Infatti, gli individui con fitness più alta sono quelli che avranno più probablità di riprodursi e passare i propri geni positivi alle prossime generazione. In questa maniera soluzioni con fitness bassa hanno una bassa probablilità di generare figli, mentre le migliori soluzioni riescono a generare anche multipli figli con soluzioni altrettanto buone.
+
+### Rappresentazione della soluzione
+
+Fino ad adesso abbiamo parlato di individui in senso astratto, ma è molto importante decidere come rappresentare una soluzione. Infatti la struttura dati scelta apre o chiude porte a diversi tipi di mutazioni e crossover. 
+Una rappresentazione errata può anche rischiare di generare soluzioni inammissibili: questo fa perdere importanti individui alla popolazione, che non riescono più a partecipare al processo evolutivo.
+Al contrario, la rappresentazione giusta può rendere molto più semplice trovare una buona soluzione e ha anche un effetto molto importante sulla veloocità con cui viene raggiunta.
+
+
+
+### Mutazione
+
+La mutazione è una perturbazione casuale del genoma dell'individuo. Questo è un processo che serve a creare nuove soluzioni da una soluzione pre-esistente, senza cambiarla troppo. L'idea di fondo è che se l'individuo originale ha già una buona fitness,anche individui "adiacenti" avranno una fitness simile. In questa maniera è molto semplice trovare la soluzione ottimale nel caso si ha già un individuo molto promettente.
+Nel caso il genoma sia composto da numeri, la soluzione può essere una piccola perturbazione. Nel caso invece il genoma contenga valori categorici (come ad esempio "rosso", "giallo", "blu"), basta scegliere casualmente uno degli altri valori.
+La mutazione è un processo stocastico, e accade con una certa probabilità. Questa probabliità è un parametro molto importante, in quanto se è troppo bassa, nella popolazione sono presenti sempre gli stessi individui, ma se è troppo alta la popolazione cambia troppo frequentememnte e le soluzioni buone vengono diluite.
+
+
+### Crossover
+
+In biologia il crossover è il processo per cui durante la produzione dei gameti, i cromosomi materni e paterni si intersecano e mischiano. Questo permette ad un individuo di creare gameti più diversi da se stesso, aumentando la variabililtà genetica.
+
+Negli algoritmi genetici il crossover è molto simile. Infatti le soluzioni di due diversi individui vengono mischiati, e due nuovi individui con caratteristiche di entrambi i genitori vengono creati. Mentre la mutazione causa delle piccole perturbazioni locali attorno ad una soluzione, il crossover permette di generare individui molto diversi da quelli originali e superare quindi minimi locali per trovare soluzioni ottime globalmente. Il crossover è così efficace perchè permette a individui molto promettenti di mischiarsi e generare con alta probabilità una soluzione molto migliore, ma permette anche a individui con poca fitness ma con alcune caratteristiche vincenti di unirsi a soluzioni di buona qualità
+
+
+
+
+
+Per il problema delle regine, il crossover consiste nel scegliere k righe da un individuo e sostituirle con le righe nella stessa posizione di un altro individuo e viceversa. 
+
+## Applicazione al problema delle 8 Regine
+
+Per il problema delle 8 regine, ho deciso di usare come *funzione di fitness* il numero di regine minacciate da altre regine.
+L'obiettivo è quindi quello di minimizzare la fitness. Infatti, l'individuo ottimale avrà fitness pari as 0, in quanto nessuna delle sue regine minaccia le altre.
+
+Per quel che riguarda **la rappresentazione della soluzione**, una scacchiera è rappresentata come una matrice di dimensione NxN i cui elementi possono essere 0 o 1.
+Se una cella ha valore 0, allora è vuota, altrimenti contiene una regina. 
+Per generare randomicamente una scacchiera, si potrebbero pescare a caso 8 celle e posizionare le regine. Questo è un esempio di *cattiva rappresentazione*, in quanto può selezionare con alta frequenza regine sulla stessa riga, colonna o diagonale. 
+
+Per ovviare a questo problema, si può posizionare una regina su ciascuna riga. In questa maniera si è sicuri che le regine possono essere attaccate solo verticalmente o diagonalmente, riducendo drasticamente il numero di cattive soluzioni.
+
+Ora che è stato definita la rappresentazione, è abbastanza ovvio come scegliere mutazione e crossover.
+Il processo di **mutazione** selezione una riga a caso e cambia la posizione della regina, sperando che lo spostamento orizzontale sia abbastanza per migliorare la fitness.
+Questo mutazione può essere considerato un *bit-fliè*, in quanto la scacchiera rappresenta le posizioni in bit e lo spostamento della regina consiste nel cambiamento di due celle da 0 a 1 e viceversa.
+
+<div class="row mt-3">
+    {% include figure.liquid loading="eager" path="/assets/gif/gen_alg_eight_queens/QueenMutating_ManimCE_v0.18.1.gif" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption" style="font-size: 18px; font-style: italic;">
+    Una sequenza di mutazioni. La fitness può migliorare, peggiorare o rimanere invariata. Essendo una piccola perturbazione, la fitness non cambia drasticamente, ma rimane nell'intorno del valore originale.
+</div>
+
+Il **crossover** invece consiste nel scegliere uno a più righe a caso e scambiarle tra due diverse scacchiere.
+Esistono altri tipi di crossover per matrici in cui, ad esempio, si considerano sub-matrici quadrate o rettangolari. 
+Tuttavia la rappresentazione che è stata scelta permette di utilizzare la prima versione, più semplice, che inoltre continua a garantire la presenza di una sola regina per riga.
+
+<div class="row mt-3">
+    {% include figure.liquid loading="eager" path="/assets/gif/gen_alg_eight_queens/QueenCrossover_ManimCE_v0.18.1.gif" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption" style="font-size: 18px; font-style: italic;">
+    Un crossover tra due scacchiere. Il numero di righe selezionate è arbitrario, e può essere fino a N-1 (N in questo caso è 8).
+</div>
+
+
+## Pro e Contro degli Algoritmi Genetici
+
+Come tutte le tecniche, gli Algoritmi Genetici non sono il Sacro Graal, e bisogna valutare di volta in volta se sono o meno lo strumento corretto.
+
+### Pro
+Il grande vantaggio degli algoritmi genetici è la loro flessibilità. Il design della soluzione si affida molto all'intuito del progettista, che potrebbe già avere un'idea di quale forma debba avere una buona soluzione. Questo rende anche la fase di design molto leggera, poiché il codice da scrivere non è particolarmente complicato e non richiede l'uso di framework o librerie complesse. È senza dubbio un ottimo modo per incorporare all'interno di un modello la propria intuizione, ed è il motivo per cui è così accessibile.
+
+Un altro grande vantaggio è l'elevata velocità di prototipizzazione. In caso di scadenze molto strette, rappresentano un buon modo per produrre una soluzione decente e funzionante, rimandando l'adozione di tecniche più sofisticate a un momento successivo.
+
+Infine, le regole di mutazione e crossover possono essere definite per qualsiasi tipo di dato, senza particolari vincoli. Questo consente di descrivere soluzioni con strutture esotiche, difficilmente o per nulla riproducibili con altri tipi di algoritmi. Offre anche grande flessibilità nella definizione di vincoli e soluzioni non ammissibili, che possono essere penalizzate nella funzione di fitness o scartate a priori quando vengono generate.
+
+### Contro
+
+Il processo di ottimizzazione negli Algoritmi Genetici dipende fortemente dalla robustezza e dalla qualità della **rappresentazione** scelta. La **funzione di fitness** è cruciale, e spesso in un progetto è necessario iterare diverse versioni della funzione prima di trovarne una soddisfacente. Inoltre, non sempre le **mutazioni e i crossover** selezionati sono efficaci nel superare minimi locali poco soddisfacenti.
+
+### Possibili Alternative
+
+I contro derivano dal fatto che gli Algoritmi Genetici non imparano esplicitamente dalle soluzioni di qualità, ma necessitano di molti tentativi per esplorare efficacemente lo spazio di stato.
+
+Esistono algoritmi basati su gradienti che, pur imponendo la differenziabilità della funzione di fitness, riescono a utilizzare le informazioni contenute nelle soluzioni di bassa qualità. Questi algoritmi sanno infatti calcolare esplicitamente la direzione di miglioramento, anziché affidarsi a eventi stocastici.
+
+Un'altra possibile alternativa sono gli algoritmi di *ottimizzazione bayesiana*. Questi sono capaci di esplorare lo spazio di stato in modo efficiente e costruire intelligentemente la prossima soluzione da testare.
