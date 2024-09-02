@@ -6,6 +6,7 @@ description: Modellare utilizzando algoritmi genetici, applicato al problema del
 tags: matematica code
 categories: sample-posts
 featured: true
+thumbnail: /assets/gif/gen_alg_eight_queens/QueenAttacking_ManimCE_v0.18.1.gif
 ---
 
 ## Introduzione
@@ -133,5 +134,5 @@ Esistono altri algoritmi in grado di sfruttare una caratteristica molto utile di
 
 
 
-Un'altra possibile alternativa sono gli algoritmi di *ottimizzazione bayesiana*.Come gli algoritmi genetici, anche loro esplorano lo spazio di stato casualmente perturbando la soluzione. Tuttavia, la perturbazione è applicata in maniera intelligente, in quanto in maniera sistematica provano a esplorare soluzioni mai esplorate senza però allontanarsi da soluzioni promettenti. Oltre ad aver bisogno della differenziabilità, questi algoritmi ipotizzano anche che soluzioni molto simili hanno fitness simile, senza grandi discontinuità.
+Un'altra possibile alternativa sono gli algoritmi di *ottimizzazione bayesiana*. Come gli algoritmi genetici, anche loro esplorano lo spazio di stato casualmente perturbando la soluzione. Tuttavia, la perturbazione è applicata in maniera intelligente, in quanto in maniera sistematica provano a esplorare soluzioni mai esplorate senza però allontanarsi da soluzioni promettenti. Oltre ad aver bisogno della differenziabilità, questi algoritmi ipotizzano anche che soluzioni molto simili hanno fitness simile, senza grandi discontinuità.
 
