@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Algoritmi Genetici e le 8 regine
-date: 2024-08-25 18:00:00
+date: 2024-09-30 18:00:00
 description: Modellare utilizzando algoritmi genetici, applicato al problema delle 8 regine
 tags: matematica code
 categories: sample-posts
