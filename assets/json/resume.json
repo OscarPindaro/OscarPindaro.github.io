@@ -7,12 +7,8 @@
     "phone": "",
     "url": "https://oscarpindaro.github.io/",
     "summary": "Sono un Data Scientist con una passione per reti neurali. In particolare, amo elaborazione di testo ed immagini. Sono un avido videogiocatore.",
-    "location": {
-    },
-    "profiles": [
-      {
-      }
-    ]
+    "location": {},
+    "profiles": [{}]
   },
   "work": [
     {
@@ -28,8 +24,7 @@
         "Sviluppo di soluzioni di Rapida Prototipizzazione nel campo del CAD-CAM per l'estrusione di stampi di alluminio nell'industria manifatturiera, basate su Graph neural Networks come tecnica di Explainable AI, finanziato dal bando europeo H2020 (AI Regio Open call 2)",
         "Sviuppo di soluzione di Rapida Prototipizzazione per predirre le proprietà fisiche di ricete e formulazioni chimiche",
         "Sviluppo di un chatbot con un sistema di Retrieval Augmented Generation (RAG) per un blog di mixologia e creazione cocktail"
-
-    ]
+      ]
     }
   ],
   "education": [
@@ -56,10 +51,8 @@
       "courses": []
     }
   ],
-  "awards": [
-  ],
-  "certificates": [
-  ],
+  "awards": [],
+  "certificates": [],
   "publications": [
     {
       "name": "A Reinforcement Learning controller optimizing costs and battery State of Health in smart grids",
@@ -85,45 +78,26 @@
       "name": "Sistemi Operativi",
       "level": "Avanzato",
       "icon": "fa-solid fa-desktop",
-      "keywords": [
-        "Windows",
-        "Linux"
-      ]
+      "keywords": ["Windows", "Linux"]
     },
     {
       "name": "Linguaggi di Programmazione",
       "level": "Avanzato",
       "icon": "fa-solid fa-code",
-      "keywords": [
-        "Bash",
-        "Python",
-        "Java"
-      ]
+      "keywords": ["Bash", "Python", "Java"]
     },
     {
       "name": "Librerie di Machine Learning",
       "level": "Avanzato",
       "icon": "fa-solid fa-cogs",
-      "keywords": [
-        "scikit-learn",
-        "PyTorch",
-        "PyTorch Geometric",
-        "Hugging Face",
-        "Haystack (RAG)"
-      ]
+      "keywords": ["scikit-learn", "PyTorch", "PyTorch Geometric", "Hugging Face", "Haystack (RAG)"]
     },
     {
       "name": "Deployment e Gestione di Servizi",
       "level": "Avanzato",
       "icon": "fa-solid fa-server",
-      "keywords": [
-        "FastAPI",
-        "Flask",
-        "Docker",
-        "Docker Compose",
-        "Gradio"
-      ]
-    }      
+      "keywords": ["FastAPI", "Flask", "Docker", "Docker Compose", "Gradio"]
+    }
   ],
   "languages": [
     {
@@ -141,16 +115,9 @@
     {
       "name": "Videogiochi e Sviluppo",
       "icon": "fa-solid fa-gamepad",
-      "keywords": [
-        "Game Design",
-        "Game Development",
-        "Godot Engine"
-      ]
+      "keywords": ["Game Design", "Game Development", "Godot Engine"]
     }
-    
   ],
-  "references": [
-  ],
-  "projects": [
-  ]
+  "references": [],
+  "projects": []
 }

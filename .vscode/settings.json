@@ -1,19 +1,11 @@
 {
-    "spellright.language": [
-        "English (American)",
-        "English (British)",
-        "Italian"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext"
-    ],
-    "files.associations": {
-        "*.html": "liquid"
-    },
-    "[liquid]": {
-        "editor.defaultFormatter": "Shopify.theme-check-vscode",
-        "editor.formatOnSave": true
-    }
+  "spellright.language": ["English (American)", "English (British)", "Italian"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext"],
+  "files.associations": {
+    "*.html": "liquid"
+  },
+  "[liquid]": {
+    "editor.defaultFormatter": "Shopify.theme-check-vscode",
+    "editor.formatOnSave": true
+  }
 }

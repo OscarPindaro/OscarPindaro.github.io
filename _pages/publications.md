@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: Pubblicazioni
-description: 
+description:
 nav: false
 nav_order: 2
 ---
