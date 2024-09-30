@@ -8,5 +8,12 @@
         "markdown",
         "latex",
         "plaintext"
-    ]
+    ],
+    "files.associations": {
+        "*.html": "liquid"
+    },
+    "[liquid]": {
+        "editor.defaultFormatter": "Shopify.theme-check-vscode",
+        "editor.formatOnSave": true
+    }
 }
