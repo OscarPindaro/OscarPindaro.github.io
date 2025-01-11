@@ -24,13 +24,17 @@ Possono avere un ruolo più o meno importante all'interno della struttura del gi
 ## Obiettivi
 L'obiettivo di questo framework è quello di dare a scrittori di storie e personaggi un tool per rendere "vivi" i loro personaggi.
 LMPC si occuperà di raccogliere le informazioni di questi personaggi, finetunare un LLM (Large Language Model) per imparare a rispondere come loro, gestire le memorie del mondo di gioco e così via.
+Una volta pronto, questo LLM potrebbe essere usato per avere degli script in tempo reale in una campagna di Dungeon&Dragons. Oppure essere integrato all'interno di un videogioco, in cui gli utenti possono scrivere quello che vogliono ai personaggi. Oppure semplicemente avere un personaggio con cui chiacchierare e fare delle domande. Tutto questo seguendo la visione originale che il designer aveva per il personaggio.
+Questo può permettere di scrivere personaggio che non vivono su binari prefissati, ma che possono reagire a qualsiasi tipo di input.
 
-Il tool non è pensato per generare da zero un personaggio. Penso che la qualità e il valore artistico nel creare una storia e un personaggio è dato da un essere umano, non da una macchina che sputa fuori una backstory e un personaggio generico.
+### Cosa non è LMPC
 
-Una volta pronto, questo LLM potrebbe essere usato per avere degli script in tempo reale in una campagna di Dungeon&Dragons. Oppure essere integrato all'interno di un videogioco, in cui gli utenti possono scrivere quello che vogliono ai personaggi. Oppure semplicemente avere un personaggio con cui chiacchierare e fare delle domande.
+Questo non è un framework per generare automaticamente personaggi. Non è un interfaccia che crea un personaggio da un prompt generico.
+L'obiettivo è partire da un personaggio già creato, su cui qualcuno ha già fatto un buon lavoro. Deve avere una storia, un mondo originale, esempi di conversazioni, opinioni.
+Questo per due motivi:
+- i modelli generativi tengono a generare personaggi abbastanza generici e insipidi
+- la creazione artistica è qualcosa che appartiene agli uomini e non alle macchine, e preferirei non svilire questo desgin creando una macchina che sputa fuori backstory e personaggi generici
 
-Questo non è un framework per generare automaticamente personaggi.
-L'obiettivo è partire da un personaggio già creato, con la sua storia, il suo mondo di origine, le caratteristiche, e dargli vita allenando un modello su tutte queste informationi
 
 ## Principali difficoltà
 
@@ -60,8 +64,6 @@ Inoltre, se necessario, visto che si usa RAG per interagire con un NPC, creare u
 Gran parte dei modelli presenta un moralismo abbastanza spiccio e un modo di pensare e scrivere molto corporate. Questo è perchè sono allenati da aziende come Meta, Microsoft, OpenAI, Anthropic o Google. 
 Questi modelli sono "sicuri", a prezzo di peggiori performance in ambito roleplay. 
 L'effetto è una generale sensazione di cringe su alcuni output (molto frequentemente questi modelli fanno la morale all'utente) e un alto livello di **refusal**, ovvero la predisposizione a rifiutarsi a parlare di alcuni argomenti. Questo è un po' un problema nel caso un NPC potrebbe anche banalmente voler parlare di alchol.
-
-
 
 
 ## Creazione del Personaggio
@@ -300,3 +302,7 @@ Ho sperimentato con due approcci diversi:
 Le prove sul modello allenato hanno mostrato risultati interessanti: riesce a utilizzare correttamente le frasi caratteristiche di Orlando e mantiene una buona coerenza quando risponde a domande simili a quelle del training. Tuttavia, emerge un limite significativo quando il modello si trova di fronte a domande che si discostano troppo dal dataset di allenamento - in questi casi, tende a ignorare la domanda e a ripetere informazioni su se stesso in modo poco naturale.
 
 Queste osservazioni suggeriscono due direzioni principali per migliorare il sistema: da un lato, sarà fondamentale espandere la varietà del dataset di training per coprire un range più ampio di possibili interazioni. Dall'altro, sarà cruciale ridurre la dipendenza da conversazioni generate automaticamente, incorporando invece più esempi di dialoghi creati da esseri umani, che tipicamente presentano sfumature e complessità difficili da replicare attraverso la generazione automatica.
+
+## Conclusioni
+Sono tutto sommato dei risultati che ho ottenuto. E' stata un po' un'occasione per fare per la prima volta l'allenamento di un LLM su un caso d'uso che ho trovato abbastanza divertente.
+Sono un po' amareggiato dell'ottusità che a volte il modello mostra, ma è un po' il prezzo che si paga con modelli così piccoli.
