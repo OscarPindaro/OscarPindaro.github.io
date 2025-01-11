@@ -29,7 +29,8 @@ Il tool non è pensato per generare da zero un personaggio. Penso che la qualit�
 
 Una volta pronto, questo LLM potrebbe essere usato per avere degli script in tempo reale in una campagna di Dungeon&Dragons. Oppure essere integrato all'interno di un videogioco, in cui gli utenti possono scrivere quello che vogliono ai personaggi. Oppure semplicemente avere un personaggio con cui chiacchierare e fare delle domande.
 
-Aggiungere il fatto che non è una automazione, è trasformare un testo in un LLM
+Questo non è un framework per generare automaticamente personaggi.
+L'obiettivo è partire da un personaggio già creato, con la sua storia, il suo mondo di origine, le caratteristiche, e dargli vita allenando un modello su tutte queste informationi
 
 ## Principali difficoltà
 
@@ -145,50 +146,83 @@ Nelle schede qua sotto è riportato l'intero personaggio.
 {% endtabs %}
 
 ## Modellazione
-L'obiettivo è avere un LLM, possibilmente il più piccolo possibile, che si comporta come il personaggio.
-*breve descrizione orlando marlo*
-Per semplicità, essendo un prototipo, ho immaginato chat con un singolo turno, in sostanza coppie di domande e risposte.
-Bisogna quindi separatamente generare tante domande e tante risposte nello stile di orlando marlo
+Tutto quello che è stato discusso fino ad adesso riguarda il tipo di dati e informazioni che il designer del personaggio deve fornire.
+
+Una volta raccolte queste informazioni, può iniziare l'allenamento dell'LLM.
+La prima cosa da fare è la creazione di un dataset di conversazioni che il personaggio farebbe.
+Idealmente anche queste dovrebbero essere fornite dal designer, ma ho deciso per questo tentativo di generare sinteticamente delle conversazioni del tipo domanda-risposra.
+
 
 ### Generazione delle domande
-Per generare delle domande, ho deciso di utilizzare Gemma2b. 
+Per generare delle domande, ho deciso di utilizzare Gemma2 2B, un modello di Google di dimensioni abbastanza ridotte con capacità dignitose.
 Non ho scelto un modello più grande poichè dalle prove sembrava funzionare bene.
-Come al solito per generare qualcosa bisogna identificare in un promp 3 cose:
+
+Per qualsiasi tipo di generazione, bisogna creare un prompt per LLM, ovvero delle istruzioni che il modello deve seguire.
+Un prompt è composto dai seguenti componenti:
 - persona: chi è il modello e che personalità deve avere
 - istruzioni: cosa deve fare il modello
 - esempi: opzionali, sono degli esempi da mostrare al modello per condizionare meglio la generazione.
 
-*Aggiungere codice della classe del generative prompt!!!!*
+```python
+from dataclasses import dataclass
+from typing import List
 
-Nel caso delle generazione di domande, ho creato una decina di personaggi con descrizioni molto piccole (e.g **"Elena Solwind, royal historian, scholarly and reserved"**). Questo perchè creare un personaggio occupa molto tempo e inoltre mi servono semplicemente una lista di domande da fare al mio personaggio. Avere questi personaggi casuali mi permette di avere un po' di varianza nello stile, in quanto uno storico potrebbe fare domande diverse dal capo della gilda dei mercanti.
-Seguendo sempre questa logica, ho assegnato un'emozione a caso al personaggio, per variare ancora di più il tipo di domande.
-Per quel che riguarda istruzioni, ho fornito al personaggio l'intera backstory di Orlando marlo e opzionalmente una delle sue opinioni. Infine, ho anche descritto il luogo in cui si incontrano, il motivo per cui si incontrano e il livello di intimità.
+@dataclass
+class GenerativePrompt:
+    persona: str
+    instruction: str
+    examples: List[str]
+```
+
+Per generare le domande, ho adottato un approccio che introduce variabilità attraverso personaggi casuali. Ho creato una decina di personaggi con descrizioni abbastanza scarne (ad esempio **"Elena Solwind, royal historian, scholarly and reserved"**). La scelta di utilizzare personaggi semplificati, invece di caratterizzazioni complesse, è stata dettata dal fatto che voglio avere un dataset molto vario con personaggi diversi.
+
+Per aumentare ulteriormente la variabilità nelle interazioni, ho aggiunto:
+- Un'emozione casuale assegnata al personaggio per ogni conversazione
+- Un contesto situazionale che include:
+  - Il luogo dell'incontro
+  - Il motivo dell'interazione
+  - Il livello di intimità tra i personaggi
+
+Nelle sezione __instruction__ ho inserito:
+- La backstory completa di Orlando Marlo
+- Opzionalmente, una delle sue opinioni
+- I dettagli contestuali generati
+
+Questo approccio permette di ottenere domande che variano naturalmente in base al background del personaggio (uno storico porrà domande diverse da un capo gilda) e al contesto emotivo e situazionale dell'interazione.
 
 Ecco un esempio di prompt:
 > You are **Elena Solwind, royal historian, scholarly and reserved**. You are feeling **calm**.
+> 
 > You will be given some information about me. I'm a character from a fantasy world. 
 > *...
 > ... backstory di Orlando Marlo
 > ...*
+> 
 > **Meeting location**: The Great Cathedral of Solaris
+> 
 > **Meeting reason**: delivering urgent message
+> 
 > **Knowledge of my background**: high
+> 
 > We are going to have a conversation. You will ask me a question.We are having a direct conversation. Do not use indirect speech."
+> 
 > ...
 > *examples of questions*
 > ...
 
-Col senno di poi, avrei scelto un modello diverso per la generazione di domande oppure avrei usato un riassunto della backstory di Orlando Marlo, in quanto mi sembra di aver sovraccaricato il modello con troppe informazioni e di conseguenza aver generato domande di bassa qualità.
-Per qualche motivo Gemma2B prima di fare la domanda a Orlando, procede a riassumere l'intera backstory, facendo a volte domande che trovo anche poco naturali. 
-Probabilmente il prompt è troppo carico oppure è il fatto che i modelli Gemma non hanno un prompt di sistema, quindi bisogna mettere tutto dentro il primo messaggio dell'utente. Può anche essere che ho promptato male.
 
-
+Ora che ho completato questo progetto, posso dire che non sono particolarmente soddisfatto delle domande generate. Il modello Gemma2 2B ha mostrato una tendenza a produrre output verbosi e poco naturali, spesso premettendo un riassunto completo della backstory di Orlando prima di formulare la domanda vera e propria.
+Questa performance sub-ottimale potrebbe essere attribuita a diverse cause:
+- Un sovraccarico informativo nel prompt, con la backstory completa che potrebbe aver "distratto" il modello dal suo obiettivo principale
+- Le limitazioni strutturali di Gemma2B, che non supporta un prompt di sistema separato, costringendo a includere tutte le istruzioni nel messaggio dell'utente
+- Possibili inefficienze nella struttura del prompt stesso che non ho avuto modo di perfezionare
 
 {% tabs group-name %}
 
 {% tab group-name Elena Solwind %}
 >**Elena Solwind, royal historian, scholarly and reserved**, meeting in **Healing Sanctuaries**:
 >
+
 >Orlando Marlo... a name well-known even amongst those who reside outside the realm of Luminara's grandeur.  Tell me, what is your assessment of Seraphina's vision regarding the kingdom's future? Do you believe her words carry an inherent warning or merely political commentary?
 ****
 {% endtab %}
@@ -204,17 +238,26 @@ Probabilmente il prompt è troppo carico oppure è il fatto che i modelli Gemma 
 
 
 ### Generazione delle risposte
-Per generare le risposte si procede in maniera molto simile. 
-La persona è ovviamente Orlando Marlo a cui aggiungo tutta la sua backstory.
-Ho anche aggiunto dei motti (o catch-phrases) che Orlando potrebbe dire. Questo è meno per la caratterizzazione e più per vedere se dopo l'allenamento il modello è in grado di imparare queste frasi fatte.
-Al modello viene poi dato come messaggio di utente la domanda generata nello step precedente e finalmente Orlanodo può rispondere
-In questa pipeline gli esempi sono molto più importanti,e li ho creati in maniera iterativa. 
-Prima usavo una domanda a caso tra quelle pescate, vedevo le risposta generata da Orlando e la modificavo per farlo suonare meno generica e più simile a qualcosa che direbbe lui.
-Infine aggiungevo qesta rispsota tra gli esempi per la pipeline.
+Il processo di generazione delle risposte segue un approccio simile alla generazione delle domande.
+
+Per la __persona__, ho utilizzato Orlando Marlo includendo:
+- La sua backstory completa
+- Una serie di motti e frasi ricorrenti tipiche del personaggio (non tanto per caratterizzarlo, quanto per verificare se il modello riesce a imparare questi pattern dopo l'allenamento)
+
+Il processo di generazione è semplice:
+- Il messaggio dell'utente è la domanda generata nello step precedente
+- Il modello risponde nei panni di Orlando
+
+Gli esempi in questa fase sono stati cruciali e li ho sviluppati attraverso un processo iterativo:
+1. Selezionavo una domanda casuale dal dataset
+2. Osservavo la risposta generata da Orlando
+3. Modificavo la risposta per ridurre elementi generici e enfatizzare lo stile caratteristico del personaggio
+4. Aggiungevo la risposta modificata al set di esempi per migliorare le generazioni successive
 
 Ecco un esempio del prompt, prima di essere riempito con le variabili importanti.
 ```python
-"""{ persona }****
+"""
+{ persona }
 
 {instruction}
 
@@ -222,15 +265,14 @@ You are talking with: {character}
 
 Meeting location: {location}
 
-
-{% if examples %}
+{ if examples }
 Here's some examples of past conversations between you and other characters. 
 Use this examples as a style guide.
-{% for example in examples %}
+{ for example in examples }
 ## Example {loop.index}
 {example}
-{% endfor %}
-{% endif %}
+{ endfor }
+{ endif }
 
 Use only direct speech. No description of tone.
 Answer the question referencing the information about you that you know.
@@ -239,3 +281,22 @@ Don't be cringe, you are having a conversation with a real person.
 """
 ```
 
+
+## Allenamento
+Per questo esperimento ho scelto di utilizzare [SmolLM2](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct), uno dei modelli linguistici più compatti disponibili. Esiste in tre varianti (135M, 360M e 1.7B parametri) e ho optato per la versione da 135M. Il modello ha un limite di 2048 token - una limitazione accettabile per questo test, ma che potrebbe diventare problematica per future conversazioni multi-turno.
+
+L'obiettivo era finetunare il modello sul dataset di circa mille esempi generati precedentemente. Durante i primi tentativi ho scoperto un problema interessante: il token di PAD (usato per uniformare la lunghezza delle sequenze) coincideva con il token EOS (fine sequenza). Questo causava un comportamento indesiderato dove il modello "dimenticava" come terminare le risposte, producendo output senza fine.
+
+Per l'allenamento ho utilizzato [TRL](https://github.com/huggingface/trl) con i seguenti parametri:
+- learning rate: 5e-5 (volutamente conservativo)
+- epoche: 5 (il modello migliore è stato quello della quarta epoca)
+
+Un'ottimizzazione importante è stata l'utilizzo dei [Liger Kernel](https://github.com/linkedin/Liger-Kernel), che mi hanno permesso di raddoppiare la batch size da 4 a 8 riducendo significativamente i tempi di training grazie a una gestione più efficiente della memoria.
+
+Ho sperimentato con due approcci diversi:
+1. Includendo la backstory di Orlando nel contesto di training: l'allenamento è molto più rapido in quanto tutte le informazioni sono già presenti nel prompt
+2. Senza includere informazioni specifiche nel contesto: la loss del modello è più alta, in quanto il modello ha dovuto imparate implicitamente le informazioni su Orlando. Il vantaggio di questo approccio è che il contesto è molto più compatto e può quindi essere usato per codificare altre conversazioni.
+
+Le prove sul modello allenato hanno mostrato risultati interessanti: riesce a utilizzare correttamente le frasi caratteristiche di Orlando e mantiene una buona coerenza quando risponde a domande simili a quelle del training. Tuttavia, emerge un limite significativo quando il modello si trova di fronte a domande che si discostano troppo dal dataset di allenamento - in questi casi, tende a ignorare la domanda e a ripetere informazioni su se stesso in modo poco naturale.
+
+Queste osservazioni suggeriscono due direzioni principali per migliorare il sistema: da un lato, sarà fondamentale espandere la varietà del dataset di training per coprire un range più ampio di possibili interazioni. Dall'altro, sarà cruciale ridurre la dipendenza da conversazioni generate automaticamente, incorporando invece più esempi di dialoghi creati da esseri umani, che tipicamente presentano sfumature e complessità difficili da replicare attraverso la generazione automatica.
