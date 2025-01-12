@@ -11,71 +11,70 @@ toc:
 tabs: true
 ---
 
+## Cos'è LeMoNPC?
+LeMoNPC (**L**anguage **M**odel **N**on-**P**layable **C**haracter) è un progetto che si pone come obiettivo la creazione automatica di NPC (Non-Playable Character), personaggi che all'interno di un videogioco comunicano con il giocatore.
 
-LMPC (Language Model non-Playable Character) è un progetto che si pone come obiettivo la creazione automatica di NPC (Non-Playable Character), personaggi che all'interno di un videogioco comunicano con il giocatore.
-
-Possono avere un ruolo più o meno importante all'interno della struttura del gioco, in quanto possono:
+Un NPC ha un ruolo più o meno importante all'interno della struttura del gioco, in quanto può:
 - spiegare e portare avanti la trama principale del gioco
 - spostare l'attenzione del giocatore su una sotto-trama secondaria 
 - dare missioni al giocatore
 
-
-## Obiettivi
 L'obiettivo di questo framework è quello di dare a scrittori di storie e personaggi un tool per rendere "vivi" i loro personaggi.
-LMPC si occuperà di raccogliere le informazioni di questi personaggi, finetunare un LLM (Large Language Model) per imparare a rispondere come loro, gestire le memorie del mondo di gioco e così via.
-Una volta pronto, questo LLM potrebbe essere usato per avere degli script in tempo reale in una campagna di Dungeon&Dragons. Oppure essere integrato all'interno di un videogioco, in cui gli utenti possono scrivere quello che vogliono ai personaggi. Oppure semplicemente avere un personaggio con cui chiacchierare e fare delle domande. Tutto questo seguendo la visione originale che il designer aveva per il personaggio.
-Questo può permettere di scrivere personaggio che non vivono su binari prefissati, ma che possono reagire a qualsiasi tipo di input.
+LeMoNPC si occuperà di raccogliere le informazioni su loro, finetunare un LLM (Large Language Model) per imparare a rispondere come loro, gestire le memorie del mondo di gioco e così via.
+Una volta pronto, questo LLM potrebbe essere usato per avere delle risposte personalizzate in tempo reale in una campagna di Dungeon&Dragons. Oppure essere integrato all'interno di un videogioco, in cui gli utenti possono scrivere quello che vogliono ai personaggi. O ancora semplicemente avere un personaggio con cui chiacchierare e fare delle domande. Tutto questo seguendo la visione originale che il designer aveva per il personaggio.
+Questo può permettere di scrivere personaggi che non vivono su binari prefissati, ma che possono reagire a qualsiasi tipo di input.
 
-### Cosa non è LMPC
+In questo post presenterò un primo prototipo di LeMoNPC, sviluppato in poco tempo come proof of concept e sfida personale. Per testare il framework, ho utilizzato dei Large Language Model per generare sia il personaggio (Orlando Marlo, un nobile del Regno di Luminaria) che un dataset di conversazioni che lo riguardano. L'obiettivo finale è quello di distillare queste informazioni, generate con modelli molto espressivi ma pesanti, in un modello molto più leggero e utilizzabile.
 
-Questo non è un framework per generare automaticamente personaggi. Non è un interfaccia che crea un personaggio da un prompt generico.
-L'obiettivo è partire da un personaggio già creato, su cui qualcuno ha già fatto un buon lavoro. Deve avere una storia, un mondo originale, esempi di conversazioni, opinioni.
-Questo per due motivi:
-- i modelli generativi tengono a generare personaggi abbastanza generici e insipidi
-- la creazione artistica è qualcosa che appartiene agli uomini e non alle macchine, e preferirei non svilire questo design creando una macchina che sputa fuori backstory e personaggi generici
+In questo post vedremo:
+* Le principali difficoltà tecniche
+* Il processo di creazione del personaggio e del suo mondo
+* La generazione del dataset di conversazioni del personaggio
+* L'allenamento di LeMoNPC per replicare il comportamento del personaggio
 
+## Cosa non è LeMoNPC
+Questo non è un framework per generare automaticamente personaggi. Non è un'interfaccia che crea un personaggio da un prompt generico.
+L'obiettivo è partire da un personaggio già creato. Deve avere una storia, un mondo originale, esempi di conversazioni, opinioni.
 
-## Principali difficoltà
+Il focus di questo post è sulle tecniche per creare un NPC digitale, quindi ho utilizzato degli LLM per generare il mio personaggio base. Vedremo che in alcuni casi questo ha influito negativamente su alcuni risultati, e la mia supervisione è stata comunque necessaria.
 
-### Modelli Closed Source
-Un Large Language Model è detto closed-source quando il modello non è disponibile al pubblico, ma è il prodotto di un'azienda che serve il modello dietro ad un pay wall.
-Questi modelli vengo pagati con un modello Pay As You Go, proporzionale al numero di token generati. Questo restringe ampiamente la tipologia di videogiochi che possono essere creati, in quanto bisogna avere un modello di business che permetta di coprire i costi della generazione, come giochi live-service. Tralasciando il fatto che trovo rivoltante la quantità di monetizzazione presente in questi tipi di giochi, per me risulta anche problematico in quanto la vita del gioco e degli NPC è indissolubilmente collegata al successo del gioco e alla decisione di chiudere i server del gioco.
+## Perché LeMoNPC?
+Nonostante ChatGPT sia stato rilasciato alla fine del 2022, non sono presenti sul mercato videogiochi mainstream che implementano questa tecnologia (se tralasciamo la pila di applicazioni di *fidanzate AI*). 
+Questo è dovuto al fatto che questa tecnologia utilizza molte risorse computazionali ed economiche.
 
-### Modelli Open Source
-Un modello è detto open-source se è disponibile al pubblico e può essere scaricato e utilizzato sulla propria macchina locale.
+Nel caso di LLM **closed-source** (gestiti a porte chiuse dalle aziende produttrici), l'utilizzo è pagato con una tariffa proporzionale alla quantità di testo generato. Utilizzare questi modelli obbligherebbe allo sviluppo di giochi live-service, con una monetizzazione molto aggressiva che serve a coprire i costi.
 
-Attualmente questi modelli hanno dimensioni abbastanza notevoli, ed è necessario avere un computer con performance dignitose.
-L'hardware deve:
-- essere abbastanza potente per generare testo ad una velocità ragionevole
-- avere abbastanza memoria per ospitare il modello
+Nel caso di modelli **open-source** (scaricabili e utilizzabili sulla propria macchina locale), il problema principale è legato alle loro dimensioni.
+L'hardware che li ospita deve:
+- essere abbastanza potente per generare testo ad una velocità ragionevole;
+- avere abbastanza memoria per ospitare il modello.
 
-La [Nvidia RTX 1060](https://www.nvidia.com/it-it/geforce/10-series/) è probabilmente una delle schede video più comprate di sempre. Uscita nel 2016, è già un pezzo di hardware abbastanza vecchiotto, e comunque farebbe fatica a ospitare anche i modelli più piccoli: un modello può essere ospitato in 4 GB di VRAM con molti sacrifici, e questa scheda è spesso venduta con 6 GB di VRAM.
+La [Nvidia RTX 1060](https://www.nvidia.com/it-it/geforce/10-series/) è probabilmente una delle schede video più comprate di sempre. Uscita nel 2016, è già un pezzo di hardware abbastanza vecchiotto, e comunque farebbe fatica a ospitare anche i modelli più piccoli: un modello può essere compresso in 4 GB di VRAM con molti sacrifici, e questa scheda è spesso venduta con 6 GB di VRAM.
 L'utilizzo di così tante risorse mette anche grandi limiti al tipo di gioco che può essere sviluppato, visto che il Language Model entra in competizione con la logica del gioco, la pipeline di rendering e eventuali intelligenze artificiali.
 Inoltre, non tutti i giocatori hanno a disposizione un computer con una scheda grafica.
 
-Il mio sogno è quello di riuscire a usare tra i 200 MB e i  2GB di RAM, e possibilmente riuscire a far girare tutto su CPU. Questo permetterebbe anche a giocatori senza una macchina particolarmente avanzata di poter interagire con questi personaggi.
+Un altro problema degli LLM (sia closed che open) è che presentano un **moralismo** abbastanza spiccio molto corporate, danneggiando la loro capacità di roleplay.
+L'effetto è una generale sensazione di cringe su alcuni output (molto frequentemente questi modelli fanno la morale all'utente) e un alto livello di **refusal**, ovvero la predisposizione a rifiutarsi a parlare di alcuni argomenti. Questo è un problema nel caso un NPC volesse anche banalmente parlare di alcol.
 
-Quindi in sostanza LMPC deve essere in grado di produrre un language model che si comporta come un personaggio scritto da un essere umano. L'essere umano può dare informazioni su questo personaggio, come backstory, esempi di conversazione, cose avvenute in passato, lista di valori. Se possibile, l'utente dovrebbe seguire un formato, ma spesso queste info sono spaiate e non strutturate.
-Se viene fornito un dataset di conversazioni, basta fare finetuning. Altrimenti, LMPC genererà un dataset di conversazioni tra il personaggio e una serie di altri personaggi o utenti che interagirebbero con lui. 
-Inoltre, se necessario, visto che si usa RAG per interagire con un NPC, creare un dataset per RAG così che la gestione delle memorie dell'NPC siano fisse.
+Il mio sogno è quello di riuscire a digitalizzare un NPC usando tra i 200 MB e i 2GB di RAM, senza l'utilizzo di hardware specializzato come le schede grafiche. Questo permetterebbe anche a giocatori senza una macchina particolarmente potente di poter interagire con i personaggi.
 
-## AI Slop e Moralismo
-Gran parte dei modelli presenta un moralismo abbastanza spiccio e un modo di pensare e scrivere molto corporate. Questo è perché sono allenati da aziende come Meta, Microsoft, OpenAI, Anthropic o Google. 
-Questi modelli sono "sicuri", a prezzo di peggiori performance in ambito roleplay. 
-L'effetto è una generale sensazione di cringe su alcuni output (molto frequentemente questi modelli fanno la morale all'utente) e un alto livello di **refusal**, ovvero la predisposizione a rifiutarsi a parlare di alcuni argomenti. Questo è un po' un problema nel caso un NPC potrebbe anche banalmente voler parlare di alcol.
+LeMoNPC deve essere in grado di produrre un LLM che si comporta come un personaggio scritto da un essere umano. L'essere umano può dare informazioni su questo personaggio, come backstory, esempi di conversazione, eventi importanti, valori, etc. 
+Opzionalmente, si può fornire un dataset di conversazioni del personaggio, che può essere già utilizzato per allenare un piccolo LLM. Altrimenti, LeMoNPC si occuperà di generarlo.
 
+> *"If life gives you LeMoNs, create an NPC from your DnD character"*
+> 
+> **Socrates, probably**
 
 ## Creazione del Personaggio
-
+Ovviamente il primo passaggio per utilizzare LeMoNPC è avere un personaggio. In questa sezione spiego come ho generato **Orlando Marlo, Cavaliere di Luminaria**.
 
 ### Contesto Storico
 La creazione del contesto storico è fondamentale per definire il palcoscenico in cui i personaggi opereranno.
-Infatti, un personaggio non vive da solo nel vuoto, ma assume un certo ruolo in una società, ha delle opinioni.
-Addirittura interagisce con altri personaggi, ha antipatie, invidie, che lo rendono tridimensionale.
+Infatti, un personaggio non vive da solo nel vuoto, ma assume un certo ruolo in una società, ha delle opinioni, delle relazioni, e tanto altro.
 
-In questo prototipo, ho generato il contesto utilizzando Claude Sonnet, che preferisco a ChatGPT.
-Il mondo generato non era male, ma ho dovuto rimuovere frasi o espressioni corporate o troppo generiche. Guidando un po' la generazione sono riuscito a creare un mondo accettabile per il prototipo che voglio creare.
+In questo prototipo, ho generato il contesto storico utilizzando Claude Sonnet.
 La generazione in sé non era male, anche se conteneva alcune frasi o espressioni che trovavo troppo corporate o generiche e che ho pulito. Ogni tanto aggiungevo io personalmente qualche dettaglio per migliorare un po' la qualità della generazione.
+
 Il contesto storico si articola in diverse sezioni chiave:
 
 * **Descrizione:** Una breve introduzione che offre un primo sguardo al mondo, descrivendo le sue caratteristiche principali.
@@ -83,12 +82,9 @@ Il contesto storico si articola in diverse sezioni chiave:
 * **Entità di Potere:** Le organizzazioni o individui che detengono il controllo politico ed economico, influenzando la vita quotidiana degli abitanti del mondo.
 * **Persone Importanti:** Figure chiave della società, individuate per il loro ruolo sociale, culturale o politico. Queste figure possono offrire spunti interessanti per dialoghi e interazioni con il personaggio.
 * **Entità Marginalizzate:**  Chi vive ai margini del sistema, spesso oppresso o svantaggiato rispetto ai gruppi dominanti. La loro presenza aggiunge profondità al mondo, evidenziando le disuguaglianze e le tensioni sociali e rendendo un po' più tridimensionale l'ambientazione.
-* **Persone Importanti Marginalizzate:** Simili alle persone importanti, ma appartengono a gruppi che si oppongono al sistema dominante, in cerca di rivalsa contro un sistema che li ha buttati via e li opprime.
+* **Persone Importanti Marginalizzate:** Simili alle persone importanti, ma appartengono a gruppi che si oppongono al sistema dominante, in cerca di rivalsa contro un sistema che li ha scartati e li opprime.
 
-### Il Sacro Regno di Luminaria
-
-Nel mio caso, ho creato il Sacro Regno di Luminaria, una monarchia che condivide il potere con la Chiesa.La legittimità del regno dipende dalla percezione che i suoi sovrani siano stati scelti da Solaris, la divinità. Il governo ha un sistema di doppio potere, dove le decisioni importanti richiedono l'approvazione sia della Corona che del Concilio Solare. Molti gruppi sono marginalizzati o oppressi, tra cui coloro che vengono considerati non favoriti da Solaris e i praticanti delle tradizioni pre-Solaris.
-
+Nel mio caso, ho creato il **Sacro Regno di Luminaria**, una monarchia che condivide il potere con la Chiesa. La legittimità del regno dipende dalla percezione che i suoi sovrani siano stati scelti da Solaris, la divinità venerata nel regno. Il governo ha un sistema di doppio potere, dove le decisioni importanti richiedono l'approvazione sia della Corona che del Concilio Solare. Molti gruppi sono marginalizzati o oppressi, tra cui coloro che vengono considerati non favoriti da Solaris e i praticanti delle tradizioni pre-Solaris.
 
 ###  Personaggio
 
@@ -96,11 +92,11 @@ Una volta creato il contesto, si può procedere con il personaggio, che ha:
 
 * **Backstory:** Una breve panoramica del passato del personaggio, contenente eventi importanti che hanno plasmato la sua personalità e le sue scelte.
 * **Allineamento:**  [Un sistema semplificato per categorizzare il personaggio](https://dungeonedraghi.it/regole/personaggio/allineamento/) in base alla sua posizione sociale, alle sue convinzioni morali e al suo atteggiamento nei confronti dell'autorità. Questo elemento aiuta a definire i suoi legami con gli altri personaggi e la società nel suo complesso. 
-* **Valori:** Una lista di principi fondamentali che guidano le azioni e le decisioni del personaggio. Questi valori sono cruciali per creare un personaggio autentico e credibile, evitando stereotipi o comportamenti inconsistenti.
+* **Valori:** Una lista di principi fondamentali che guidano le azioni e le decisioni del personaggio. Questi valori sono cruciali per creare un personaggio autentico e credibile.
 * **Obiettivi:** Cosa spinge il personaggio a agire? Quali sono i suoi desideri, le sue aspirazioni e i suoi sogni? I suoi obiettivi forniscono una direzione alla sua vita e lo spingono ad interagire con gli altri personaggi e con l'ambiente circostante.
 * **Opinioni:** Una serie di posizioni assunte dal personaggio su diversi argomenti. Le opinioni riflettono il suo punto di vista sul mondo, le sue convinzioni e i suoi valori, contribuendo a renderlo un individuo complesso e sfaccettato. 
 
-In questo modo ho generato Orlando Marlo, un nobile del regno di Luminaria. Fervente credente, disprezza la corruzione presente all'interno del regno, in quanto capisce che la religione in cui ha posto la fede è utilizzata dagli altri come leva di potere. Vuole cambiare il sistema dall'interno diventando Ciambellano. E' un uomo onorevole e molto rispettato, che prova attivamente a costruire un mondo migliore. E' convinto che chiunque possa essere salvato, ma questa convinzione lo rende paternalista nei confronti di chi non condivide con lui la sua fede.
+In questo modo ho generato **Orlando Marlo, un nobile del regno di Luminaria**. Fervente credente, disprezza la corruzione presente all'interno del regno, in quanto capisce che la religione in cui ha posto la fede è utilizzata dagli altri come leva di potere. Vuole cambiare il sistema dall'interno diventando Ciambellano. E' un uomo onorevole e molto rispettato, che prova attivamente a costruire un mondo migliore. E' convinto che chiunque possa essere salvato, ma questa convinzione lo rende paternalista nei confronti di chi non condivide la sua fede.
 
 Nelle schede qua sotto è riportato l'intero personaggio.
 
@@ -149,19 +145,18 @@ Nelle schede qua sotto è riportato l'intero personaggio.
 Tutto quello che è stato discusso fino ad adesso riguarda il tipo di dati e informazioni che il designer del personaggio deve fornire.
 
 Una volta raccolte queste informazioni, può iniziare l'allenamento dell'LLM.
-La prima cosa da fare è la creazione di un dataset di conversazioni che il personaggio farebbe.
-Idealmente anche queste dovrebbero essere fornite dal designer, ma ho deciso per questo tentativo di generare sinteticamente delle conversazioni del tipo domanda-risposta.
-
+La prima cosa da fare è la creazione di un dataset di conversazioni del personaggio.
+Idealmente anche queste dovrebbero essere fornite dal designer.
 
 ### Generazione delle domande
 Per generare delle domande, ho deciso di utilizzare Gemma2 2B, un modello di Google di dimensioni abbastanza ridotte con capacità dignitose.
 Non ho scelto un modello più grande poiché dalle prove sembrava funzionare bene.
 
-Per qualsiasi tipo di generazione, bisogna creare un prompt per LLM, ovvero delle istruzioni che il modello deve seguire.
-Un prompt è composto dai seguenti componenti:
-- persona: chi è il modello e che personalità deve avere
-- istruzioni: cosa deve fare il modello
-- esempi: opzionali, sono degli esempi da mostrare al modello per condizionare meglio la generazione.
+Per qualsiasi tipo di generazione, bisogna creare un prompt per Gemma, ovvero delle istruzioni che il modello deve seguire.
+Un prompt include:
+- **Persona**: chi è il modello e che personalità deve avere.
+- **Istruzioni**: cosa deve fare il modello.
+- **Esempi**: opzionali, sono degli esempi da mostrare al modello per condizionare meglio la generazione.
 
 ```python
 from dataclasses import dataclass
@@ -174,7 +169,7 @@ class GenerativePrompt:
     examples: List[str]
 ```
 
-Per generare le domande, ho adottato un approccio che introduce variabilità attraverso personaggi casuali. Ho creato una decina di personaggi con descrizioni abbastanza scarne (ad esempio **"Elena Solwind, royal historian, scholarly and reserved"**). La scelta di utilizzare personaggi semplificati, invece di caratterizzazioni complesse, è stata dettata dal fatto che voglio avere un dataset molto vario con personaggi diversi.
+Per generare le domande, ho adottato un approccio che introduce variabilità attraverso personaggi casuali. Ho creato una decina di personaggi con descrizioni abbastanza scarne (ad esempio **"Elena Solwind, royal historian, scholarly and reserved"**).
 
 Per aumentare ulteriormente la variabilità nelle interazioni, ho aggiunto:
 - Un'emozione casuale assegnata al personaggio per ogni conversazione
@@ -188,15 +183,18 @@ Nelle sezione __instruction__ ho inserito:
 - Opzionalmente, una delle sue opinioni
 - I dettagli contestuali generati
 
-Questo approccio permette di ottenere domande che variano naturalmente in base al background del personaggio (uno storico porrà domande diverse da un capo gilda) e al contesto emotivo e situazionale dell'interazione.
+Questo approccio permette di ottenere domande che variano naturalmente in base al background del personaggio (uno storico porrà domande diverse da un capo gilda) e al rapporto che il personaggio ha con Orlando.
 
 Ecco un esempio di prompt:
 > You are **Elena Solwind, royal historian, scholarly and reserved**. You are feeling **calm**.
 > 
 > You will be given some information about me. I'm a character from a fantasy world. 
-> *...
-> ... backstory di Orlando Marlo
-> ...*
+> 
+> *...*
+> 
+> *... backstory di Orlando Marlo ...*
+> 
+> *...*
 > 
 > **Meeting location**: The Great Cathedral of Solaris
 > 
@@ -204,7 +202,7 @@ Ecco un esempio di prompt:
 > 
 > **Knowledge of my background**: high
 > 
-> We are going to have a conversation. You will ask me a question.We are having a direct conversation. Do not use indirect speech."
+> We are going to have a conversation. You will ask me a question.We are having a direct conversation. Do not use indirect speech.
 > 
 > ...
 > *examples of questions*
@@ -222,15 +220,15 @@ Questa performance sub-ottimale potrebbe essere attribuita a diverse cause:
 {% tab group-name Elena Solwind %}
 >**Elena Solwind, royal historian, scholarly and reserved**, meeting in **Healing Sanctuaries**:
 >
-
+>
 >Orlando Marlo... a name well-known even amongst those who reside outside the realm of Luminara's grandeur.  Tell me, what is your assessment of Seraphina's vision regarding the kingdom's future? Do you believe her words carry an inherent warning or merely political commentary?
-****
+
 {% endtab %}
 
 {% tab group-name Isabella Stormwind %}
->**Commander Isabella Stormwind, border patrol leader, pragmatic and direct**, meeting in **Marlo Family Estate**
+>**Commander Isabella Stormwind, border patrol leader, pragmatic and direct**, meeting in **Marlo Family Estate**:
 >
->"Orlando Marlo.  I hear whispers of your family, their long history intertwined with this land. But what drove them - specifically *you* - towards a life dedicated to upholding both Solaris and the crown?
+>Orlando Marlo.  I hear whispers of your family, their long history intertwined with this land. But what drove them - specifically *you* - towards a life dedicated to upholding both Solaris and the crown?
 
 {% endtab %}
 
@@ -238,7 +236,7 @@ Questa performance sub-ottimale potrebbe essere attribuita a diverse cause:
 
 
 ### Generazione delle risposte
-Il processo di generazione delle risposte segue un approccio simile alla generazione delle domande.
+Il processo di generazione delle risposte segue un approccio simile alla generazione delle domande. In questo caso ho usato Llama3.1 8B (quantizzato a 4 bit).
 
 Per la __persona__, ho utilizzato Orlando Marlo includendo:
 - La sua backstory completa
@@ -248,13 +246,15 @@ Il processo di generazione è semplice:
 - Il messaggio dell'utente è la domanda generata nello step precedente
 - Il modello risponde nei panni di Orlando
 
-Gli esempi in questa fase sono stati cruciali e li ho sviluppati attraverso un processo iterativo:
-1. Selezionavo una domanda casuale dal dataset
-2. Osservavo la risposta generata da Orlando
-3. Modificavo la risposta per ridurre elementi generici e enfatizzare lo stile caratteristico del personaggio
-4. Aggiungevo la risposta modificata al set di esempi per migliorare le generazioni successive
+Gli esempi di risposte in questa fase sono stati cruciali per catturare la personalità di Orlando.
+Sono stati selezionati con un processo iterativo:
+1. Selezione di una domanda casuale dal dataset.
+2. Valutazione della risposta generata da Orlando.
+3. Modifica della risposta per ridurre elementi generici e enfatizzare lo stile caratteristico del personaggio
+4. Aggiunta della risposta modificata al set di esempi per migliorare le generazioni successive
 
 Ecco un esempio del prompt, prima di essere riempito con le variabili importanti.
+{% raw %}
 ```python
 """
 { persona }
@@ -265,14 +265,14 @@ You are talking with: {character}
 
 Meeting location: {location}
 
-{ if examples }
+{% if examples %}
 Here's some examples of past conversations between you and other characters. 
 Use this examples as a style guide.
-{ for example in examples }
+{% for example in examples %}
 ## Example {loop.index}
 {example}
-{ endfor }
-{ endif }
+{% endfor %}
+{% endif %}
 
 Use only direct speech. No description of tone.
 Answer the question referencing the information about you that you know.
@@ -280,18 +280,19 @@ Don't introduce yourself.
 Don't be cringe, you are having a conversation with a real person.
 """
 ```
+{% endraw %}
 
 
 ## Allenamento
-Per questo esperimento ho scelto di utilizzare [SmolLM2](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct), uno dei modelli linguistici più compatti disponibili. Esiste in tre varianti (135M, 360M e 1.7B parametri) e ho optato per la versione da 135M. Il modello ha un limite di 2048 token - una limitazione accettabile per questo test, ma che potrebbe diventare problematica per future conversazioni multi-turno.
+Per questo esperimento ho scelto di utilizzare [SmolLM2](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct), uno dei modelli linguistici più compatti disponibili. Esiste in tre varianti (135M, 360M e 1.7B parametri) e ho optato per la versione da 135M. Il modello ha un contesto di 2048 token - una limitazione accettabile per questo test, ma che potrebbe diventare problematica per future conversazioni multi-turno.
 
-L'obiettivo era finetunare il modello sul dataset di circa mille esempi generati precedentemente. Durante i primi tentativi ho scoperto un problema interessante: il token di PAD (usato per uniformare la lunghezza delle sequenze) coincideva con il token EOS (fine sequenza). Questo causava un comportamento indesiderato dove il modello "dimenticava" come terminare le risposte, producendo output senza fine.
+L'obiettivo era finetunare il modello sul dataset di circa mille esempi generati precedentemente. Durante i primi tentativi ho scoperto un problema interessante specifico di questi modelli: il token di PAD (usato per uniformare la lunghezza delle sequenze) coincide con il token EOS (fine sequenza). Questo causa un comportamento indesiderato dove il modello "dimentica" come terminare le risposte, non smettendo mai di parlare.
 
 Per l'allenamento ho utilizzato [TRL](https://github.com/huggingface/trl) con i seguenti parametri:
 - learning rate: 5e-5 (volutamente conservativo)
 - epoche: 5 (il modello migliore è stato quello della quarta epoca)
 
-Un'ottimizzazione importante è stata l'utilizzo dei [Liger Kernel](https://github.com/linkedin/Liger-Kernel), che mi hanno permesso di raddoppiare la batch size da 4 a 8 riducendo significativamente i tempi di training grazie a una gestione più efficiente della memoria.
+Un'ottimizzazione importante è stata l'utilizzo dei [Liger Kernel](https://github.com/linkedin/Liger-Kernel), che mi hanno permesso di raddoppiare la batch size da 4 a 8, riducendo significativamente i tempi di training grazie a una gestione più efficiente della memoria.
 
 Ho sperimentato con due approcci diversi:
 1. Includendo la backstory di Orlando nel contesto di training: l'allenamento è molto più rapido in quanto tutte le informazioni sono già presenti nel prompt
