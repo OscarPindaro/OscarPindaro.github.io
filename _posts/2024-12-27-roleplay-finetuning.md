@@ -1,12 +1,11 @@
 ---
 layout: post
-title: LLM e Personaggi di D&D oppure Olrando Marlo, finetunato per roleplayare?
+title: LeMoNPC
 date: 2024-12-27 18:00:00
 description: Tentativi per capire
 tags: llm ai roleplay
 categories: sample-posts
 featured: true
-thumbnail: assets/gif/linestar/light/LinestarScene_onedark_vivid_rainbow_f0ead6.gif
 toc:
   sidebar: left
 tabs: true
@@ -33,7 +32,7 @@ Questo non è un framework per generare automaticamente personaggi. Non è un in
 L'obiettivo è partire da un personaggio già creato, su cui qualcuno ha già fatto un buon lavoro. Deve avere una storia, un mondo originale, esempi di conversazioni, opinioni.
 Questo per due motivi:
 - i modelli generativi tengono a generare personaggi abbastanza generici e insipidi
-- la creazione artistica è qualcosa che appartiene agli uomini e non alle macchine, e preferirei non svilire questo desgin creando una macchina che sputa fuori backstory e personaggi generici
+- la creazione artistica è qualcosa che appartiene agli uomini e non alle macchine, e preferirei non svilire questo design creando una macchina che sputa fuori backstory e personaggi generici
 
 
 ## Principali difficoltà
@@ -50,20 +49,20 @@ L'hardware deve:
 - essere abbastanza potente per generare testo ad una velocità ragionevole
 - avere abbastanza memoria per ospitare il modello
 
-La [Nvidia RTX 1060](https://www.nvidia.com/it-it/geforce/10-series/) è probabilmente una delle schede video più comprate di sempre. Uscita nel 2016, è già un pezzo di hardware abbastanza vecchitto, e comunque farebbe fatica a ospitare anche i modelli più piccoli: un modello può essere ospitato in 4 GB di VRAM con molti sacrifici, e questa scheda è spesso venduta con 6 GB di VRAM.
+La [Nvidia RTX 1060](https://www.nvidia.com/it-it/geforce/10-series/) è probabilmente una delle schede video più comprate di sempre. Uscita nel 2016, è già un pezzo di hardware abbastanza vecchiotto, e comunque farebbe fatica a ospitare anche i modelli più piccoli: un modello può essere ospitato in 4 GB di VRAM con molti sacrifici, e questa scheda è spesso venduta con 6 GB di VRAM.
 L'utilizzo di così tante risorse mette anche grandi limiti al tipo di gioco che può essere sviluppato, visto che il Language Model entra in competizione con la logica del gioco, la pipeline di rendering e eventuali intelligenze artificiali.
 Inoltre, non tutti i giocatori hanno a disposizione un computer con una scheda grafica.
 
 Il mio sogno è quello di riuscire a usare tra i 200 MB e i  2GB di RAM, e possibilmente riuscire a far girare tutto su CPU. Questo permetterebbe anche a giocatori senza una macchina particolarmente avanzata di poter interagire con questi personaggi.
 
-Quindi in sostanza LMPC deve essere in grado di produrre un language model che si comporta come un personaggio scritto da un essere umano. L'essere umanto può dare informazioni su questo personaggio, come backstory, esempi di conversazione, cose avvenute in passato, lista di valori. Se possibile, l'utente dovrebbe seguire un formato, ma spesso queste info sono spaiate e non strutturate.
+Quindi in sostanza LMPC deve essere in grado di produrre un language model che si comporta come un personaggio scritto da un essere umano. L'essere umano può dare informazioni su questo personaggio, come backstory, esempi di conversazione, cose avvenute in passato, lista di valori. Se possibile, l'utente dovrebbe seguire un formato, ma spesso queste info sono spaiate e non strutturate.
 Se viene fornito un dataset di conversazioni, basta fare finetuning. Altrimenti, LMPC genererà un dataset di conversazioni tra il personaggio e una serie di altri personaggi o utenti che interagirebbero con lui. 
 Inoltre, se necessario, visto che si usa RAG per interagire con un NPC, creare un dataset per RAG così che la gestione delle memorie dell'NPC siano fisse.
 
 ## AI Slop e Moralismo
-Gran parte dei modelli presenta un moralismo abbastanza spiccio e un modo di pensare e scrivere molto corporate. Questo è perchè sono allenati da aziende come Meta, Microsoft, OpenAI, Anthropic o Google. 
+Gran parte dei modelli presenta un moralismo abbastanza spiccio e un modo di pensare e scrivere molto corporate. Questo è perché sono allenati da aziende come Meta, Microsoft, OpenAI, Anthropic o Google. 
 Questi modelli sono "sicuri", a prezzo di peggiori performance in ambito roleplay. 
-L'effetto è una generale sensazione di cringe su alcuni output (molto frequentemente questi modelli fanno la morale all'utente) e un alto livello di **refusal**, ovvero la predisposizione a rifiutarsi a parlare di alcuni argomenti. Questo è un po' un problema nel caso un NPC potrebbe anche banalmente voler parlare di alchol.
+L'effetto è una generale sensazione di cringe su alcuni output (molto frequentemente questi modelli fanno la morale all'utente) e un alto livello di **refusal**, ovvero la predisposizione a rifiutarsi a parlare di alcuni argomenti. Questo è un po' un problema nel caso un NPC potrebbe anche banalmente voler parlare di alcol.
 
 
 ## Creazione del Personaggio
@@ -76,8 +75,7 @@ Addirittura interagisce con altri personaggi, ha antipatie, invidie, che lo rend
 
 In questo prototipo, ho generato il contesto utilizzando Claude Sonnet, che preferisco a ChatGPT.
 Il mondo generato non era male, ma ho dovuto rimuovere frasi o espressioni corporate o troppo generiche. Guidando un po' la generazione sono riuscito a creare un mondo accettabile per il prototipo che voglio creare.
-A causa di limiti di tempo, il contesto storico lo ho generato utilizzando claude sonnet (che preferisco molto di più ai chatGPT).
-La generazione in se non era male, anche se conteneva alcune frasi o espressioni che trovavo troppo corporate o generiche e che ho pulito. Ogni tanto aggiungevo io personalmente qualche dettaglio per migliorare un po' la qualità della generazione.
+La generazione in sé non era male, anche se conteneva alcune frasi o espressioni che trovavo troppo corporate o generiche e che ho pulito. Ogni tanto aggiungevo io personalmente qualche dettaglio per migliorare un po' la qualità della generazione.
 Il contesto storico si articola in diverse sezioni chiave:
 
 * **Descrizione:** Una breve introduzione che offre un primo sguardo al mondo, descrivendo le sue caratteristiche principali.
@@ -102,7 +100,7 @@ Una volta creato il contesto, si può procedere con il personaggio, che ha:
 * **Obiettivi:** Cosa spinge il personaggio a agire? Quali sono i suoi desideri, le sue aspirazioni e i suoi sogni? I suoi obiettivi forniscono una direzione alla sua vita e lo spingono ad interagire con gli altri personaggi e con l'ambiente circostante.
 * **Opinioni:** Una serie di posizioni assunte dal personaggio su diversi argomenti. Le opinioni riflettono il suo punto di vista sul mondo, le sue convinzioni e i suoi valori, contribuendo a renderlo un individuo complesso e sfaccettato. 
 
-In questo modo ho generato Orlando Marlo, un nobile del regno di Luminaria. Fervente credente, disprezza la corruzione presente all'interno del regno, in quanto capisce che la religione in cui ha posto la fede è utilizzata dagli altri come leva di potere. Vuole cambiare il sistema dall'interno diventando Ciambellano. E' un uomo onorevole e molto rispettato, che prova attivamente a costruire un mondo migliore. E'convinto che chiunque possa essere salvato, ma questa convinzione lo rende paternalista nei confronti di chi non condivide con lui la sua fede.
+In questo modo ho generato Orlando Marlo, un nobile del regno di Luminaria. Fervente credente, disprezza la corruzione presente all'interno del regno, in quanto capisce che la religione in cui ha posto la fede è utilizzata dagli altri come leva di potere. Vuole cambiare il sistema dall'interno diventando Ciambellano. E' un uomo onorevole e molto rispettato, che prova attivamente a costruire un mondo migliore. E' convinto che chiunque possa essere salvato, ma questa convinzione lo rende paternalista nei confronti di chi non condivide con lui la sua fede.
 
 Nelle schede qua sotto è riportato l'intero personaggio.
 
@@ -152,12 +150,12 @@ Tutto quello che è stato discusso fino ad adesso riguarda il tipo di dati e inf
 
 Una volta raccolte queste informazioni, può iniziare l'allenamento dell'LLM.
 La prima cosa da fare è la creazione di un dataset di conversazioni che il personaggio farebbe.
-Idealmente anche queste dovrebbero essere fornite dal designer, ma ho deciso per questo tentativo di generare sinteticamente delle conversazioni del tipo domanda-risposra.
+Idealmente anche queste dovrebbero essere fornite dal designer, ma ho deciso per questo tentativo di generare sinteticamente delle conversazioni del tipo domanda-risposta.
 
 
 ### Generazione delle domande
 Per generare delle domande, ho deciso di utilizzare Gemma2 2B, un modello di Google di dimensioni abbastanza ridotte con capacità dignitose.
-Non ho scelto un modello più grande poichè dalle prove sembrava funzionare bene.
+Non ho scelto un modello più grande poiché dalle prove sembrava funzionare bene.
 
 Per qualsiasi tipo di generazione, bisogna creare un prompt per LLM, ovvero delle istruzioni che il modello deve seguire.
 Un prompt è composto dai seguenti componenti:
