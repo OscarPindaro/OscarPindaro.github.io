@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Imparando Manim
-date: 2024-08-25 18:00:00
+date: 2024-11-25 18:00:00
 description: Una raccolta di animazioni per imparare ad usare meglio manim
 tags: code
 categories: animations
