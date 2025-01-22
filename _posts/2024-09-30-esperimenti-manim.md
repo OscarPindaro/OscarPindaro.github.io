@@ -4,7 +4,7 @@ title: Imparando Manim
 date: 2024-08-25 18:00:00
 description: Una raccolta di animazioni per imparare ad usare meglio manim
 tags: code
-categories: sample-posts
+categories: animations
 featured: true
 thumbnail: assets/gif/linestar/light/LinestarScene_onedark_vivid_rainbow_f0ead6.gif
 images:
