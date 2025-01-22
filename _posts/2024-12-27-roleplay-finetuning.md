@@ -2,9 +2,9 @@
 layout: post
 title: LeMoNPC
 date: 2024-12-27 18:00:00
-description: Tentativi per capire
+description: Un framework per convertire personaggi in Language Models
 tags: llm ai roleplay
-categories: sample-posts
+categories: [llm, roleplay]
 featured: true
 toc:
   sidebar: left
@@ -20,11 +20,12 @@ Un NPC ha un ruolo più o meno importante all'interno della struttura del gioco,
 - dare missioni al giocatore
 
 L'obiettivo di questo framework è quello di dare a scrittori di storie e personaggi un tool per rendere "vivi" i loro personaggi.
-LeMoNPC si occuperà di raccogliere le informazioni su loro, finetunare un LLM (Large Language Model) per imparare a rispondere come loro, gestire le memorie del mondo di gioco e così via.
+**LeMoNPC** si occuperà di **raccogliere le informazioni** su loro, **finetunare un LLM** (Large Language Model) per imparare a rispondere come loro, **gestire le memorie** del mondo di gioco e così via.
+
 Una volta pronto, questo LLM potrebbe essere usato per avere delle risposte personalizzate in tempo reale in una campagna di Dungeon&Dragons. Oppure essere integrato all'interno di un videogioco, in cui gli utenti possono scrivere quello che vogliono ai personaggi. O ancora semplicemente avere un personaggio con cui chiacchierare e fare delle domande. Tutto questo seguendo la visione originale che il designer aveva per il personaggio.
 Questo può permettere di scrivere personaggi che non vivono su binari prefissati, ma che possono reagire a qualsiasi tipo di input.
 
-In questo post presenterò un primo prototipo di LeMoNPC, sviluppato in poco tempo come proof of concept e sfida personale. Per testare il framework, ho utilizzato dei Large Language Model per generare sia il personaggio (Orlando Marlo, un nobile del Regno di Luminaria) che un dataset di conversazioni che lo riguardano. L'obiettivo finale è quello di distillare queste informazioni, generate con modelli molto espressivi ma pesanti, in un modello molto più leggero e utilizzabile.
+In questo post presenterò un primo prototipo di **LeMoNPC**, sviluppato in poco tempo come proof-of-concept e sfida personale. Per testare il framework, ho utilizzato dei Large Language Model per generare sia il personaggio (Orlando Marlo, un nobile del Regno di Luminaria) che un dataset di conversazioni che lo riguardano. L'obiettivo finale è quello di distillare queste informazioni, generate con modelli molto espressivi ma pesanti, in un modello molto più leggero e utilizzabile.
 
 In questo post vedremo:
 * Le principali difficoltà tecniche
@@ -53,10 +54,10 @@ La [Nvidia RTX 1060](https://www.nvidia.com/it-it/geforce/10-series/) è probabi
 L'utilizzo di così tante risorse mette anche grandi limiti al tipo di gioco che può essere sviluppato, visto che il Language Model entra in competizione con la logica del gioco, la pipeline di rendering e eventuali intelligenze artificiali.
 Inoltre, non tutti i giocatori hanno a disposizione un computer con una scheda grafica.
 
-Un altro problema degli LLM (sia closed che open) è che presentano un **moralismo** abbastanza spiccio molto corporate, danneggiando la loro capacità di roleplay.
-L'effetto è una generale sensazione di cringe su alcuni output (molto frequentemente questi modelli fanno la morale all'utente) e un alto livello di **refusal**, ovvero la predisposizione a rifiutarsi a parlare di alcuni argomenti. Questo è un problema nel caso un NPC volesse anche banalmente parlare di alcol.
+Un altro problema degli LLM (sia closed che open) è che presentano un **moralismo** corporate abbastanza spiccio, danneggiando la loro capacità di roleplay.
+La tragica conseguenza è una generale sensazione di cringe dell'utente (molto frequentemente questi modelli si comportano da bacchettoni) e un alto livello di **refusal**, ovvero la predisposizione a rifiutarsi a parlare di alcuni argomenti. Questo è un problema nel caso un NPC volesse anche banalmente parlare di alcol.
 
-Il mio sogno è quello di riuscire a digitalizzare un NPC usando tra i 200 MB e i 2GB di RAM, senza l'utilizzo di hardware specializzato come le schede grafiche. Questo permetterebbe anche a giocatori senza una macchina particolarmente potente di poter interagire con i personaggi.
+Il mio sogno è quello di riuscire a digitalizzare un NPC **usando tra i 200 MB e i 2GB di RAM**, senza l'utilizzo di hardware specializzato come le schede grafiche. Questo permetterebbe anche a giocatori senza una macchina particolarmente potente di poter interagire con i personaggi.
 
 LeMoNPC deve essere in grado di produrre un LLM che si comporta come un personaggio scritto da un essere umano. L'essere umano può dare informazioni su questo personaggio, come backstory, esempi di conversazione, eventi importanti, valori, etc. 
 Opzionalmente, si può fornire un dataset di conversazioni del personaggio, che può essere già utilizzato per allenare un piccolo LLM. Altrimenti, LeMoNPC si occuperà di generarlo.
@@ -211,9 +212,9 @@ Ecco un esempio di prompt:
 
 Ora che ho completato questo progetto, posso dire che non sono particolarmente soddisfatto delle domande generate. Il modello Gemma2 2B ha mostrato una tendenza a produrre output verbosi e poco naturali, spesso premettendo un riassunto completo della backstory di Orlando prima di formulare la domanda vera e propria.
 Questa performance sub-ottimale potrebbe essere attribuita a diverse cause:
-- Un sovraccarico informativo nel prompt, con la backstory completa che potrebbe aver "distratto" il modello dal suo obiettivo principale
-- Le limitazioni strutturali di Gemma2B, che non supporta un prompt di sistema separato, costringendo a includere tutte le istruzioni nel messaggio dell'utente
-- Possibili inefficienze nella struttura del prompt stesso che non ho avuto modo di perfezionare
+- **Un sovraccarico informativo nel prompt**, con la backstory completa che potrebbe aver "distratto" il modello dal suo obiettivo principale
+- **Le limitazioni strutturali di Gemma2B**, che non supporta un prompt di sistema separato, costringendo a includere tutte le istruzioni nel messaggio dell'utente
+- **Possibili inefficienze nella struttura del prompt stesso** che non ho avuto modo di perfezionare
 
 {% tabs group-name %}
 
@@ -257,13 +258,13 @@ Ecco un esempio del prompt, prima di essere riempito con le variabili importanti
 {% raw %}
 ```python
 """
-{ persona }
+{% persona %}
 
-{instruction}
+{% instruction %}
 
-You are talking with: {character}
+You are talking with: {% character %}
 
-Meeting location: {location}
+Meeting location: {% location %}
 
 {% if examples %}
 Here's some examples of past conversations between you and other characters. 
@@ -284,24 +285,30 @@ Don't be cringe, you are having a conversation with a real person.
 
 
 ## Allenamento
-Per questo esperimento ho scelto di utilizzare [SmolLM2](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct), uno dei modelli linguistici più compatti disponibili. Esiste in tre varianti (135M, 360M e 1.7B parametri) e ho optato per la versione da 135M. Il modello ha un contesto di 2048 token - una limitazione accettabile per questo test, ma che potrebbe diventare problematica per future conversazioni multi-turno.
 
-L'obiettivo era finetunare il modello sul dataset di circa mille esempi generati precedentemente. Durante i primi tentativi ho scoperto un problema interessante specifico di questi modelli: il token di PAD (usato per uniformare la lunghezza delle sequenze) coincide con il token EOS (fine sequenza). Questo causa un comportamento indesiderato dove il modello "dimentica" come terminare le risposte, non smettendo mai di parlare.
+Ho scelto di utilizzare [SmolLM2](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct), uno dei modelli linguistici più compatti disponibili, per questo esperimento. Esiste in tre varianti (135M, 360M e 1.7B parametri) e ho optato per la versione da 135M. Il modello ha un contesto di 2048 token, una limitazione accettabile per questo test, ma che potrebbe diventare problematica per future conversazioni multi-turno.
+
+L'obiettivo era finetunare il modello sul dataset di circa mille esempi generati precedentemente. Durante i primi tentativi ho scoperto un problema interessante specifico di questi modelli: il token di PAD (usato per uniformare la lunghezza delle sequenze) coincide con il token EOS (fine sequenza). Questo causa un comportamento indesiderato, in cui il modello "dimentica" come terminare le risposte e non smette mai di parlare.
 
 Per l'allenamento ho utilizzato [TRL](https://github.com/huggingface/trl) con i seguenti parametri:
-- learning rate: 5e-5 (volutamente conservativo)
-- epoche: 5 (il modello migliore è stato quello della quarta epoca)
+- **learning rate**: 5e-5 (volutamente conservativo)
+- **epoche**: 5 (il modello migliore è stato quello della quarta epoca)
 
 Un'ottimizzazione importante è stata l'utilizzo dei [Liger Kernel](https://github.com/linkedin/Liger-Kernel), che mi hanno permesso di raddoppiare la batch size da 4 a 8, riducendo significativamente i tempi di training grazie a una gestione più efficiente della memoria.
-
 Ho sperimentato con due approcci diversi:
-1. Includendo la backstory di Orlando nel contesto di training: l'allenamento è molto più rapido in quanto tutte le informazioni sono già presenti nel prompt
-2. Senza includere informazioni specifiche nel contesto: la loss del modello è più alta, in quanto il modello ha dovuto imparate implicitamente le informazioni su Orlando. Il vantaggio di questo approccio è che il contesto è molto più compatto e può quindi essere usato per codificare altre conversazioni.
+1. **Includendo la backstory di Orlando nel contesto di training**: l'allenamento è molto più rapido in quanto tutte le informazioni sono già presenti nel prompt
+2. **Senza includere informazioni specifiche nel contesto**: la loss del modello è più alta, in quanto il modello ha dovuto imparare implicitamente le informazioni su Orlando. Il vantaggio di questo approccio è che il contesto è molto più compatto e può quindi essere usato per codificare altre conversazioni.
+   
+Le prove sul modello allenato hanno mostrato risultati interessanti: riesce a utilizzare correttamente le frasi caratteristiche di Orlando e mantiene una buona coerenza quando risponde a domande simili a quelle del training. Tuttavia, emerge un limite significativo quando il modello si trova di fronte a domande che si discostano troppo dal dataset di allenamento - in questi casi tende a ignorare la domanda e a ripetere informazioni su se stesso in modo poco naturale.
 
-Le prove sul modello allenato hanno mostrato risultati interessanti: riesce a utilizzare correttamente le frasi caratteristiche di Orlando e mantiene una buona coerenza quando risponde a domande simili a quelle del training. Tuttavia, emerge un limite significativo quando il modello si trova di fronte a domande che si discostano troppo dal dataset di allenamento - in questi casi, tende a ignorare la domanda e a ripetere informazioni su se stesso in modo poco naturale.
+Queste osservazioni suggeriscono due direzioni principali per migliorare il sistema: da un lato, sarà fondamentale espandere la varietà del dataset di training per coprire un range più ampio di possibili interazioni. Dall'altro, sarà cruciale ridurre la dipendenza da conversazioni generate automaticamente e incorporare invece più esempi di dialoghi creati da esseri umani, che tipicamente presentano sfumature e complessità difficili da replicare attraverso la generazione automatica.
 
-Queste osservazioni suggeriscono due direzioni principali per migliorare il sistema: da un lato, sarà fondamentale espandere la varietà del dataset di training per coprire un range più ampio di possibili interazioni. Dall'altro, sarà cruciale ridurre la dipendenza da conversazioni generate automaticamente, incorporando invece più esempi di dialoghi creati da esseri umani, che tipicamente presentano sfumature e complessità difficili da replicare attraverso la generazione automatica.
+## Conclusioni e Sviluppi Futuri
 
-## Conclusioni
-Sono tutto sommato dei risultati che ho ottenuto. E' stata un po' un'occasione per fare per la prima volta l'allenamento di un LLM su un caso d'uso che ho trovato abbastanza divertente.
-Sono un po' amareggiato dell'ottusità che a volte il modello mostra, ma è un po' il prezzo che si paga con modelli così piccoli.
+Questo primo prototipo di LeMoNPC è stata per me più una scusa per sperimentare con la generazione sintetica di dati, modellare un LLM per fare roleplay e infine per mettere le mani in pasta facendo un finetuning.
+
+La generazione automatica delle domande ha mostrato diverse limitazioni, probabilmente dovute ad un cattivo prompt engineering. In futuro dovrò trovare un modo migliore per modellare questo aspetto.
+Sono invece rimasto molto stupito dalla capacità di Llama3.1 di fare roleplay e generare delle risposte abbastanza coerenti.
+Di sicuro la vera qualità verrà da dati creati e curati da esseri umani.
+
+Per quel che riguarda il finetuning, lo considero un successo. È vero che fuori distribuzione il modello risponde in maniera strana, ma questo è più un problema sui dati che sul modello. In futuro mi piacerebbe applicare Direct Preference Optimization (DPO) per rafforzare il training. Ovviamente questo complicherà in maniera aggiuntiva la raccolta di un dataset, ma di sicuro sarà divertente.

@@ -4,7 +4,7 @@ title: Algoritmi Genetici e le 8 regine
 date: 2024-09-30 18:00:00
 description: Modellare utilizzando algoritmi genetici, applicato al problema delle 8 regine
 tags: matematica code
-categories: sample-posts
+categories: animations
 featured: true
 thumbnail: /assets/gif/gen_alg_eight_queens/QueenAttacking_ManimCE_v0.18.1.gif
 ---

@@ -293,7 +293,7 @@ jekyll-archives:
     category: '/blog/category/:name/'
 
 display_tags: ['matematica', 'machine-learning', 'game-design', 'code'] # these tags will be displayed on the front page of your blog
-display_categories: ['external-services'] # these categories will be displayed on the front page of your blog
+display_categories: ['llm'] # these categories will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
