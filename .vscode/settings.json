@@ -1,14 +1,6 @@
 {
-  "spellright.language": [
-    "English (American)",
-    "English (British)",
-    "Italian"
-  ],
-  "spellright.documentTypes": [
-    "latex",
-    "plaintext",
-    "markdown"
-  ],
+  "spellright.language": ["English (American)", "English (British)", "Italian"],
+  "spellright.documentTypes": ["latex", "plaintext", "markdown"],
   "files.associations": {
     "*.html": "liquid"
   },
