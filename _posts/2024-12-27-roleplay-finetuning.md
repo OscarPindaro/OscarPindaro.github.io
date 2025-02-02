@@ -9,6 +9,7 @@ featured: true
 toc:
   sidebar: left
 tabs: true
+thumbnail: /assets/img/limone32_bordo_colorato.png
 ---
 
 ## Cos'è LeMoNPC?
