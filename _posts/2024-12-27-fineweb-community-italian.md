@@ -15,11 +15,9 @@ related_publications: true
 ---
 
 
-Nell'ambito del Machine Learning, la lingua italiana è una lingua molto poco rappresentata.
-Filtrando per lingua italiana la lista di dataset open testuali presenti su [hugging face](https://huggingface.co/), si possono trovare circa 6300 datasets, contro i 9000 francesci o gli 8000 tedeschi. L'inglese ovviamente regna sovrano, per ovvi motivi.
-Le stesse considerazioni valgono per modelli NLP.
 
-Nel caso di LLM generativi, i grandi colossi openAI e Anthropic sono in grado di conversare agilmente in italiano, mentre i modelli open source sono ancora un po' acerbi.
+Dando una rapida occhiatta su [hugging face](https://huggingface.co/), i dataset italiani sono circa 6300, contro gli 8000 tedeschi o i 9000 francesi. L'inglese ovviamente regna sovrano, per ovvi motivi.
+Le stesse considerazioni valgono per modelli NLP.
 
 | Lingua    | Dataset | Modelli  |
 |:-----------|:---------:|:----------:|
@@ -29,18 +27,30 @@ Nel caso di LLM generativi, i grandi colossi openAI e Anthropic sono in grado di
 | Spagnolo  | 1,167   | 8,092    |
 | Tedesco   | 943     | 8,004    |
 
+E' chiaro che  la lingua italiana è poco rappresentata.
+I grandi modelli privati (come ChatGPT e Claude) conversano agilmente in italiano, mentre quelli open-source sono ancora un po' acerbi, soprattuo in ambienti con poche risorse computazionali.
+La poca rappresentazione rende anche poco conveniente e razionale per aziende sviluppare per loro, preferendo a specializzarsi sul mondo anglosassone. 
+Questa cosa è particolarmente vera per tutte quelle lingue esterne al mondo occidentale.
+
+
 
 ## Fineweb-Edu
-Nel maggio 2024 HuggingFace rilasciò Fineweb {% cite penedo2024the%} un dataset di 15 trilioni di token, completamente in inglese. Si tratta di un lavoro davvero immenso e di altissima qualità. L'obiettivo principale è stato quello di creare un dataset da usare nella fase di pretrain di un LLM generativo. 
-L'idea dietro a questo progetto è che per allenare un LLM, non solo c'è bisogno di una grande quantità di dati, ma anche di una alta qualità.
-Un subset molto importante di questo dataset è [Fineweb-Edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu). Composto da 1.3T di token contenuto educativo, dalla divulgazione e deep-dive tecnici a lezioni.
-Per poter estratte questi campioni di alta qualità, HuggingFace annotò un subset di Fineweb con LLama3-70B-Instruct. Da queste annotazioni costruì poi un classificatore che si occupa di classificare su larga scala il resto del dataset.
-Questo approccio è ottimo per testo inglese, poichè llama3 performa bene in questa lingua, ma purtroppo non può essere generalizzato alle altre lingue. Per quanto le performance su lingue europee potrebbero essere state accettablii, c'è un grande subset di lingue in cui avrebbe performato molto male.
 
-Si apre quindi la porta a Fineweb-C
+Nel maggio 2024 HuggingFace ha rilasciato Fineweb {% cite penedo2024the%}, un dataset di 15 trilioni (!!!) di token. 
+Il dataset è stato creato a partire da [CommonCrawl](https://commoncrawl.org/), un dump di tutti i contenuti presenti su internet fino a quel momento.
+CommonCrawl è stato processato, deduplicato e elaborato, rimuovendo tutti i contenuti di bassa qualità e superflui.
+Purtroppo, questo dataset si concentra soprattuto sulla lingua inglese.
+
+Un subset molto importante di questo dataset è [Fineweb-Edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu). Composto da 1.3T di token, ha un focus su contenuto educativo.
+Per poter estratte questi campioni di alta qualità, HuggingFace ha annotato un subset di Fineweb con LLama3-70B-Instruct, dividendo i campioni per contenuto e qualità informativa.
+Da queste annotazioni ha costruito poi un classificatore molto più snello e rapido che si occupa di classificare su larga scala il resto del dataset.
+Questo approccio è ottimo per testo in lingua inglese, essendo la lingua in cui  Llama3 è più fluente,, ma purtroppo non può essere generalizzato alle altre lingue, in quanto le performance di classficazione sarebbero molto più basse (specialmente per le lingue del medio-oriente e del sud-est asiatico).
+
+Per superare questa limitazione dei modelli generativi attuali, è stato quindi creato Fineweb-C.
 
 ## Fineweb-C
-[Fineweb-C](https://huggingface.co/datasets/data-is-better-together/fineweb-c) può essere considerato il naturale passo successivo a fineweb. L'idea è quella di riuscire a capire quali campioni sono di altamente educativi e quali invece sono di bassa qualità, proprio come in fineweb edu. Tuttavia, al posto di usare un LLM come LLama3, l'idea è quella di chiedere alla community di annotare circa un migliaio di campioni nella propria lingua.
+[Fineweb-C](https://huggingface.co/datasets/data-is-better-together/fineweb-c) può essere considerato il naturale passo successivo a FineWeb, estendendo l'analisi fatta in precedenza su tutte le lingue.
+L'idea di base è sempre la stessa: trovare un modo per distinguere campioni do bassa qualità da campioni  informativi. Se in FineWeb si usava un LLM, invece per questo dataset HuggingFace ha chiesto aiuto alla community. Per ogni lingua sono stati estratti 1000 campioni, e ha chiesto a dei volontari di annotare questi campioni. 
 In particolare, gli annotatori devono classificare i campioni nelle seguenti classi:
 - **None**: il campione non ha alcun contenuto informativo. Può essere pubblicità, spam, un post su un social che non parla di niente di particolare, news di gossip
 - **Minimal**: il campione contiene un contenuto informativo molto minimo, come ad esempio un articolo di giornale che parla di un particolare evento
@@ -50,51 +60,64 @@ In particolare, gli annotatori devono classificare i campioni nelle seguenti cla
 - **Problematic Content**: questa è una categoria ombrello in cui finiscono tutti quei pezzi di testo formattati male, oppure spam, pornografia, materiale sensibile, etc.
   
 Lo split italiano è stato, ad oggi, annotato da 26 annotatori. Io personalmente ho contribuito annotando circa 400 campioni.
-Questi 1000 campioni sono stati pescati casualmente dal dataset original, pre-filtrando materiale problematico (come pornografia, gioco d'azzardo, etc). Devo dire che la pipeline di pre-filtraggio ha funzionato molto bene, visto che non mi è capitato quasi mai di trovare campioni simili. Ho letto che in altre lingue, specialmente del sud-est asiatico, hanno invece un grande problema di filtraggio, e quindi sono ancora alla fase precedente del task di labelling.
+Questi 1000 campioni sono stati pescati casualmente dal dataset originale, pre-filtrando materiale problematico (come pornografia, gioco d'azzardo, etc). Devo dire che la pipeline di pre-filtraggio ha funzionato molto bene, visto che non mi è capitato quasi mai di trovare campioni imbarazzanti. So che non è stato così semplice in altri casi, specialmente per le lingue del sud-est asiatico, in cui la pipeline ha fatto passare moltissima pornografia.
 
 ### Perchè è importante
 Come già detto prima, l'Italiano è una lingua molto poco rappresentata sia in ambito di modelli e dati.
-Questo limita gravemente la qualità dei modelli base che possono essere utilizzati, sia in ambito predittivo che in ambito generativo.
+Quando cerco modelli per il mio lavoro di tutti i giorni, sono sempre costretto a scegliere modelli generici allenati su dataset che iniziano a mostrare i segni del tempo.
+Provo una grande invidia per chi sviluppa in inglese, che ha addirittura classificatori e retriever già pronti per il campo medico o altri campi estremamente specifici.
 
-La lingua inglese invece gode davvero di moltissima flessibilità, avendo addiritutra dataset mono tematici (specifici ad esempio nel campo medico e legale).
+### Criticità
 
-### Lati oscuri
-Questo processo si porta ovviamente delle criticità.
-Innanzitutto mentre annotavo ho avuto il sospetto che alcuni campioni fossero coperti da proprietà intellettuale. Questo è un grande tema aperto, in quanto tutti i grandi modelli sono stati allenati su contenuti di cui non avevano i diritti. Personalmente non penso che questo problema verrà mai affrontato bene, in quanto storicamente anche in altri ambiti la proprietà intellettuale su contenuti testuali la riesce a garantire solo chi ha i mezzi economici per farlo, magari allo stesso tempo ignorando la proprietà intellettuale di entità più piccole (guardo voi giornali online che caricate video da youtube rebrandizzati).
+Mi sembra onesto parlare anche dei punti un po' più dolorosi della questione. 
+Mentre annotavo il dataset, ho avuto il sospetto di star leggendo materiale coperto da copyright. 
+La proprietà intellettuale è sempre un argomento caldo su cui c'è molta ipocrisia, a cui ci si interessa solo se si è vittime del fenomeno, ma che è molto semplice da ignorare se non si è direttamente coinvolti. 
+Probabilmente cambierò idea altre 100 volte su questo. Attualmente penso che la natura open di questo progetto lo allevia un po' dalle invevitabili colpe di cui si macchierà quando verrà scalato sull'intero dataset. Spero però che parlandone il grande pubblico possa iniziare a capire un po' meglio l'origine di questi dati e inizi una conversazione attorno a questo argomento.
 
-C'è poi ovviamente tutta la discussione sul fatto che i modelli generativi vengono usati molto per generare contenuti di fake news e polarizzanti, e una tecnologia migliore potrebbe portare in italia un accentuamento di questo problema più di quanto non sia presente adesso
+C'è poi ovviamente tutto un tema secondario sul fatto che i modelli generativi vengono utilizzati molto per generare fake news e scam. Di sicuro rendere gli LLM fluenti in multiple lingue aumenerà il raggio di questa piaga, ma almeno per design questo dataset prova a raccogliere dati con contenuto educativo.
 
 ## Analisi del dataset
-Mentre annotavo, ho iniziato a sospettare che gran parte del contenuto di alta qualità fosse soprattutto in ambito teologico e politico, avendo trovato molti testi del catechismo e riflessioni sul capitale di Marx.
-Per questo motivo, ho deciso di fare un'analisi del dataset per vedere la distribuzione dei topic. A seguire presenterò il mio metodo.
-Consiste nei seguenti:
-- estrazioni di keyword dal testo
-- interrogazione di un LLM per estrarre un topic di alto livello
-- analisi dei dati
+
+Ho deciso di analizzare questo dataset poichè, mentre annotavo, sospetto che gran parte del contenuto di altà qualità fosse soprattuo in ambito teologico e politico.
+Ho infatti trovato molti testi estratti da del catechismo e da riflessioni sul capitale di Marx.
+
+Per questo motivo, ho deciso di fare un'analisi del dataset per vedere la distribuzione dei topic. 
+L'analisi avverò in questa maniera:
+1. estrazioni di keyword dal testo
+2. utilizzo di un LLM per estrarre un topic generali
+3. visualizzazione dei dati e considerazioni
+
+Il codice sorgente lo trovate qua [nella mia repo.](https://github.com/OscarPindaro/fineweb-c-analysis-ita)
 
 ## Estrazione delle keyword
-Visto che ho intenzione di usare un LLM per estrarre dei topic di alto livello dal testo(come ad esempio "Moda", "Tecnologia", "Teologia"), ho deciso innanzitutto di estrarre delle keywords per ogni campione del dataset. L'idea è che se do al LLM queste keyword, sarà in grado di estrarre topic migliori. Purtroppo non sono riuscito a fare nessuno studio di ablazione, ma sembrava una intuizione ragionevole e mi permetteva di pre-esplorare i campioni guardando le keyword più importanti.
-Per estrarre queste keyword ho usato **tf-idf** (Term Frequency - Inverse Document Frequency). 
-L'intuizione dietro a questo algoritmo è la seguente: una parola non è importante se è in termini assoluti è molto o poco presente. E' importante se è presente solo in questo particolare documento. Questo permette di poter capire quali sono le parole più importanti, considerando la loro frequenza assoluta ma anche la frequenza all'interno del singolo testo. Ad esempio, se ho due pazzi di testo, uno che è un articolo che descrive la vita di uno scienziato, e un altro che descrive la vita dello scienziato Enrico Fermi, per entrambi la parola *scienziato* è molto importante, ma per il secondo le parole Enrico Fermi lo rendono molto unico.
+Visto che ho intenzione di usare un LLM per estrarre dei topic di alto livello dal testo(come ad esempio "Moda", "Tecnologia", "Teologia"), ho deciso innanzitutto di estrarre delle keywords per ogni campione del dataset. 
+Questo ha due implicazioni. Innanzitutto, mi permette di farmi una vaga idea sui topic di ogni campione, permettendomi di indirizzare meglio i prossimi passi.
+Inoltre, penso che se do ad un LLM oltre al testo le sue keyword, potrò estrarre topic generali migliori.
+Purtroppo non sono riuscito a fare nessuno studio di ablazione, ma sembrava una intuizione ragionevole e ho gratis una pre-esplorazione del dataset.
 
-Ecco degli esempi di keyword:
-- dal campione 1 ho estratto le parole chiave `['fedi', 'oro', 'anello', 'fondere', 'anelli']`, quindi probabilmente parlerà di Matrimonio, o comunque Fede
+Per estrarre queste keyword ho usato **TF-IDF** (Term Frequency - Inverse Document Frequency). 
+L'intuizione dietro a questo algoritmo è la seguente: una parola non è importante se è in termini assoluti è molto o poco presente, ma è importante se è presente solo in questo particolare documento. 
+Questo permette scovare per ogni documento le parole che lo identificano unicamente, considerando la loro frequenza assoluta ma anche la frequenza all'interno del singolo testo. Ad esempio, se ho due pazzi di testo, uno che è un articolo che descrive la vita di uno scienziato, e un altro che descrive la vita dello scienziato Enrico Fermi, per entrambi la parola *scienziato* è molto importante, ma per il secondo le parole Enrico Fermi lo rendono unico.
+
+Ecco degli esempi di keyword che ho estratto:
+- dal campione 1 ho estratto le parole chiave `['fedi', 'oro', 'anello', 'fondere', 'anelli']`, quindi probabilmente parlerà di Matrimonio, o comunque Religione
 - dal campione 12 ho estratto le parole chiave `['plusvalore', 'capitale', 'produzione', 'merce', 'accumulazione']`, quindi probabilmente parlerà di economia, (o di marxismo)
 
-Ho dovuto pulire un po' il dataset, rimuovendo articoli, preposizioni, numero e altre parole ad alta frequenza ma poco interessanti, visto che inizialmente mi venivano proposte loro in alcuni campioni.
+Per questo algoritmo è molto importante fare un po' di data cleaning, rimuovendo articoli, preposizioni, numeri e altre parole ad alta frequenza ma poco interessanti.
 
 ## Estrazione dei Topic di alto livello
-Una volta estratte le keyword, tocca estrarre i topic. Per estrarre i topic ho deciso di utilizzare LLama3.1 quantizzato a 8 bit (`llama3.1:8b-instruct-q8_0`) e Gemma 2 (`gemma2:2b`), in quanto sono due modelli che stanno agilmente all'interno della mia RTX 4070. Ho anche provato a utilizzare una versione distillata di deepseek (`llama3.1:8b-instruct-q8_0`), ma come mostrerò più avanti i tempi di calcolo erano un po' troppo lunghi e ho preferito ignorarlo.
+Una volta estratte le keyword, bisogna estrarre i topic generali. Per questi, ho deciso di utilizzare LLama3.1 quantizzato a 8 bit (`llama3.1:8b-instruct-q8_0`) e Gemma 2 (`gemma2:2b`), visto che riesco a lanciarli sulla mia RTX 4070. Ho anche provato a utilizzare una versione distillata di deepseek (`llama3.1:8b-instruct-q8_0`), ma come mostrerò più avanti i tempi di calcolo erano un po' troppo lunghi e ho preferito ignorarlo.
 Il prompt di sistema è strutturato nella seguente maniera:
-- spiegazione delle classi di qualità di Fineweb-C
-- Indicazioni su che informazioni il modello ha accesso (elenco di parole chiave, testo)
-- Regole di categorizzazione: il modello deve dare categorie di alto livello e non specifiche. Ha accesso ad una lista di categorie pre-calcolate, ma può comunque scegliere di assegnare una nuova categoria non esistente
-- Formato dell'output: ho chiesto al modello di scrivere tutto all'interno di tag xml, visto che sono semplici da parsare
+- spiegazione delle classi di qualità di Fineweb-C.
+- Indicazioni su che informazioni il modello ha accesso (elenco di parole chiave, testo).
+- Regole di categorizzazione: il modello deve dare categorie di alto livello e non specifiche. Ha accesso ad una lista di categorie pre-calcolate, ma può comunque scegliere di assegnare una nuova categoria non esistente.
+- Formato dell'output: ho chiesto al modello di scrivere tutto all'interno di tag xml, visto che sono semplici da parsare.
 
-Il modello ha la libertà di scegliere una classe anche se non è presente tra quelle fornite. Questo è dovuto al fatto che prima di fare questa analisi non volevo espormi troppo scegliendo delle classi predefinite. Operativamente, quando il modello sceglie una classe non presente tra quelle esistente, la aggiungo alla lista delle classi possibili.
+Il modello ha la libertà di scegliere una classe anche se non è presente tra quelle fornite. Questo mi permette di avere un po' di flessibilità, anche perchè è un dataset che conosco poco.  
+Operativamente, quando il modello sceglie una classe non presente tra quelle esistente, la aggiungo alla lista delle classi possibili, condizionando le future generazioni.
 
-Alla fine di questo processo, llama ha estratto circa 142. Ci sono alcuni casi in cui alcune categorie sono duplicate (un singolare o un plurale) ma per la visualizzazione di seguito non avrà molto peso.
-Gemma invece ha estratto 94 categorie.
+Alla fine di questo processo, Llama ha estratto circa 142 topic. Ci sono alcuni casi in cui alcune categorie sono duplicate (singolare/plurale) ma per la visualizzazione di seguito non avrà molto peso.
+Gemma invece ha estratto 94 categorie, ma ho preferito quelle estratte  
 A occhi mi sono piaciute di più quelle di llama
 
 Parlare di prompt caching che classificava in fretta
@@ -178,6 +201,8 @@ Testo: {{campione.content}}
 {% enddetails %}
 
 Ancora una volta sono rimasto molto stupito dalle performance di llama, mentre gemma non mi ha reso particolarmente entusiasta.
+
+Parlare di prompt caching
 
 ## Visualizzazione
 
