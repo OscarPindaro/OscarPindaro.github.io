@@ -120,7 +120,10 @@ Alla fine di questo processo, Llama ha estratto circa 142 topic. Ci sono alcuni 
 Gemma invece ha estratto 94 categorie, ma ho preferito quelle estratte  
 A occhi mi sono piaciute di più quelle di llama
 
-Parlare di prompt caching che classificava in fretta
+Per servire Llama e Gemma ho usato [ollama](https://ollama.com/). L'ultima versione di ollama ha introdotto il `prompt caching`, che permette di mantenere una cache delle ultime richieste fatte al modello. Nel caso di prompt molto simili tra una sessione all'altra, questa cache viene utilizzata per evitare di ricalcolare tutti i valori dell'attenzione del prompt di sistema, aumetando drammaticamente la velocità di generazione. Questo mi ha permesso di avere i topic generali in una decina di minuti. Purtroppo con DeepSeek questo vantaggio non si è presentato: poichè è un modello "resoning", prima di dare una risposta, emette molti token di ragionamento, e l'annotazione quindi è salita da 10 minuti a 4 ore.
+
+
+Ancora una volta sono rimasto molto stupito dalle performance di llama, mentre gemma non mi ha reso particolarmente entusiasta.
 
 {% details Prompt di sistema - Tempalte Jinja %}
 {% raw %}
@@ -199,10 +202,6 @@ Testo: {{campione.content}}
 ```
 {% endraw %}
 {% enddetails %}
-
-Ancora una volta sono rimasto molto stupito dalle performance di llama, mentre gemma non mi ha reso particolarmente entusiasta.
-
-Parlare di prompt caching
 
 ## Visualizzazione
 
