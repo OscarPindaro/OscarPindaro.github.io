@@ -260,6 +260,7 @@ Il terzo motivo è molto semplice: la visualizzazione risulta essere molto chiar
 
 ## Conclusioni
 Alla fine le mie preoccupazioni di uno sbilanciamento su *Teologia* e *Marxismo* si sono rivelate infondate, quindi possiamo stare certi che gli LLM allenati su questi dati saranno di ottima qualità (si scherza...).
+
 Sono rimasto stupito dalla quantità di campioni segnati come **"Good"**, e pescandone qualcuno a caso non penso di essere d'accordo con alcuni annotatori. Se abbastanza persone annotano multiple volte lo stesso campione si potrebbero calcolare delle metriche di *agreement* tra i diversi annotatori e trovare campioni controversi.
 
 Sono rimasto un po' dispiaciuto dal fatto che la qualità è divisa abbastanza omogeneamente in tutto il grafico. Questo potrebbe implicare che un modello che predice la qualità avrà bisogno di ben più di 1000 campioni. Oppure, più probabilmente, implica che una visualizzazione su solo due dimensioni non riesce a catturare bene la differenza di qualità.
