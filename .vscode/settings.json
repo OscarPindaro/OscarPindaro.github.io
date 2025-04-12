@@ -6,7 +6,8 @@
   ],
   "spellright.documentTypes": [
     "latex",
-    "plaintext"
+    "plaintext",
+    "markdown"
   ],
   "files.associations": {
     "*.html": "liquid"
