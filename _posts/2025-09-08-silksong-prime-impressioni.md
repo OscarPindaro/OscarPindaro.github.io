@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Silksong - Prime Impressioni
-date: 2025-08-08 13:30:00
+date: 2025-09-08 13:30:00
 description: Prime impressioni dopo 5 ore di gioco. 
 tags: videogames
 categories: [videogames]
