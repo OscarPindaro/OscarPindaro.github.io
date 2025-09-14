@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Vibe Coding & 100x Engineers
-date: 2025-09-08 13:30:00
+date: 2025-09-09 13:30:00
 description: Un argomento che mi porta molto vicino al Luddismo e allo Jihad Butleriano
 tags: llm code satirico
 categories: [llm, code]
