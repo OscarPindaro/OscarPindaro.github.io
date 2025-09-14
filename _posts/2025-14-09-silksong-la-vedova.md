@@ -10,7 +10,7 @@ thumbnail: /assets/img/silksong/vedova.png
 ---
 A circa 8 ore di gioco ho preso l'artiglio e finalmente mi si è aperta la prima vera boss fight di Silksong.
 
-Ovviamente una gran figata. Usando un'espressione che un mio caro amico non sopporta, posso dire che questo combattimento è una bellissima danza. 
+Ovviamente una gran figata. Usando un'espressione che un mio caro amico non sopporta, posso dire che questo combattimento è una bellissima danza.
 
 Ho pensato che sarebbe stato carino provare a capire perché il design di questo boss sembra così ben riuscito.
 

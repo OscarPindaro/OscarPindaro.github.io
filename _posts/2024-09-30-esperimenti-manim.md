@@ -51,63 +51,63 @@ I miei preferiti sono le animazioni con le palette calde, che ricordano il tramo
 
 <swiper-container keyboard="true" navigation="true" pagination="true" pagination-clickable="true" pagination-dynamic-bullets="true" rewind="true">
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_golden_sunset_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_onedark_classic_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_pastel_rainbow_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_high_saturation_rainbow_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_onedark_class_rainbow_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_sunset_skyline_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_muted_rainbow_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_neon_rainbow_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
         loading="eager"
         path="assets/gif/linestar/light/LinestarScene_onedark_f0ead6.gif"
         class="img-fluid rounded z-depth-1"
@@ -121,70 +121,70 @@ Queste sono le palette che mi hanno dato in assoluto più soddisfazioni, quindi 
 
 <swiper-container keyboard="true" navigation="true" pagination="true" pagination-clickable="true" pagination-dynamic-bullets="true" rewind="true">
   <swiper-slide>
-    {% include figure.liquid 
+    {% include figure.liquid
       loading="eager"
       path="assets/gif/linestar/dark/LinestarScene_golden_sunset_282c33.gif"
       class="img-fluid rounded z-depth-1"
     %}
   </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_onedark_282c33.gif"
     class="img-fluid rounded z-depth-1"
   %}
 </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_pastel_rainbow_282c33.gif"
     class="img-fluid rounded z-depth-1"
   %}
 </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_high_saturation_rainbow_282c33.gif"
     class="img-fluid rounded z-depth-1"
   %}
 </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_onedark_classic_282c33.gif"
     class="img-fluid rounded z-depth-1"
   %}
 </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_sunset_skyline_282c33.gif"
     class="img-fluid rounded z-depth-1"
   %}
 </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_muted_rainbow_282c33.gif"
     class="img-fluid rounded z-depth-1"
   %}
 </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_neon_rainbow_282c33.gif"
     class="img-fluid rounded z-depth-1"
   %}
 </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_onedark_class_rainbow_282c33.gif"
     class="img-fluid rounded z-depth-1"
   %}
 </swiper-slide>
 <swiper-slide>
-  {% include figure.liquid 
+  {% include figure.liquid
     loading="eager"
     path="assets/gif/linestar/dark/LinestarScene_onedark_vivid_rainbow_282c33.gif"
     class="img-fluid rounded z-depth-1"

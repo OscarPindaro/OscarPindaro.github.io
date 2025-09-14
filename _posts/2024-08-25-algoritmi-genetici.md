@@ -19,7 +19,7 @@ Per spiegare il loro funzionamento, userò come esempio il problema delle 8 regi
 
 ## Problema delle 8 regine
 
-[Il problema delle 8 regine](<https://it.wikipedia.org/wiki/Rompicapo_delle_otto_regine#:~:text=Il%20rompicapo%20(o%20problema)%20delle,i%20movimenti%20standard%20della%20regina.>) è un puzzle che consiste nel posizionare 8 regine su una scacchiera 8x8 senza che nessuna di queste minacci le altre.  
+[Il problema delle 8 regine](<https://it.wikipedia.org/wiki/Rompicapo_delle_otto_regine#:~:text=Il%20rompicapo%20(o%20problema)%20delle,i%20movimenti%20standard%20della%20regina.>) è un puzzle che consiste nel posizionare 8 regine su una scacchiera 8x8 senza che nessuna di queste minacci le altre.
 La "difficoltà" del problema consiste nel fatto che le regine minacciano gli altri pezzi che si trovano sulla stessa riga, colonna o diagonali. Tradizionalmente il problema viene risolto utilizzando un algoritmo _Depth-First Search (DFS)_ di backtracking.
 
 <div class="row mt-3">

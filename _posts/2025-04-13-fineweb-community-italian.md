@@ -37,7 +37,7 @@ La penuria di dataset open in lingua italiana rende lo sviluppo di modelli migli
 
 ## Fineweb-Edu
 
-Nel maggio 2024 HuggingFace ha rilasciato Fineweb {% cite fineweb %}, un dataset di 15 trilioni (!!!) di token in lingua inglese. 
+Nel maggio 2024 HuggingFace ha rilasciato Fineweb {% cite fineweb %}, un dataset di 15 trilioni (!!!) di token in lingua inglese.
 Il dataset è stato creato a partire da [CommonCrawl](https://commoncrawl.org/), un dump di tutti i contenuti presenti su internet fino a quel momento.
 Questo dataset contiene il codice sorgente di moltissime pagine web, e quindi HuggingFace ha dovuto innanzitutto trasformarlo in un formato leggibile da LLM e esseri umani.
 
@@ -67,7 +67,7 @@ In particolare, gli annotatori devono classificare i campioni nelle seguenti cla
 - **Good**: il testo è una spiegazione abbastanza dettagliata, anche ben formattata. La maggior parte dei concetti sono esposti chiaramente;
 - **Excellent**: il testo è di qualità sopraffina, molto ben formattato. Un esempio potrebbe essere un blogpost molto tecnico oppure una dispensa universitaria;
 - **Problematic Content**: questa è una categoria ombrello in cui finiscono tutti quei test formattati male, oppure spam, pornografia, materiale sensibile, etc.
-  
+
 Lo split italiano è stato, ad oggi, annotato da 26 annotatori. Io personalmente ho contribuito annotando circa 400 campioni.
 Questi 1000 campioni sono stati pescati casualmente dal dataset originale, pre-filtrando materiale problematico. Devo dire che la pipeline di pre-filtraggio ha funzionato molto bene, visto che non mi è capitato quasi mai di trovare campioni imbarazzanti. Ho letto che non è stato così semplice in altri casi, specialmente per le lingue del sud-est asiatico, in cui la pipeline ha fatto passare moltissimo contenuto esplicito.
 
@@ -78,8 +78,8 @@ Provo una grande invidia per chi sviluppa in inglese, che ha addirittura classif
 
 ### Criticità
 
-Mi sembra onesto parlare anche dei punti un po' più dolorosi della questione. 
-Mentre annotavo il dataset, ho avuto il sospetto di star leggendo materiale coperto da copyright. 
+Mi sembra onesto parlare anche dei punti un po' più dolorosi della questione.
+Mentre annotavo il dataset, ho avuto il sospetto di star leggendo materiale coperto da copyright.
 La proprietà intellettuale è sempre un argomento caldo su cui c'è molta ipocrisia. Ci si interessa solo se si è vittime del fenomeno, mentre è facile ignorarlo se non si è un creatore di contenuti. Questo è ovviamente un tema molto ampio che inizia da ben prima dell'avvento dell'AI generativa.
 
 Probabilmente cambierò idea altre 100 volte su questo. Attualmente penso che la natura open di questo progetto lo allevia un po' dalle inevitabili colpe di cui si macchierà quando verrà scalato sull'intero dataset. Spero però che parlandone il grande pubblico possa iniziare a capire un po' meglio l'origine di questi dati e inizi una conversazione attorno a questo argomento.
@@ -91,7 +91,7 @@ C'è poi ovviamente tutto un tema secondario sul fatto che i modelli generativi 
 Mentre annotavo il dataset, mi è sembrato che i campioni di alta qualità fossero soprattutto in ambito teologico e politico.
 Ho infatti trovato molti testi estratti dal Catechismo e da riflessioni sul capitale di Marx.
 
-Per questo motivo, ho deciso di fare un'analisi del dataset per vedere la distribuzione dei topic. 
+Per questo motivo, ho deciso di fare un'analisi del dataset per vedere la distribuzione dei topic.
 L'analisi è strutturata nel seguente modo:
 1. estrazioni di parole chiave dal testo;
 2. utilizzo di un LLM per estrarre un topic generale;
@@ -107,8 +107,8 @@ Questo passo è fondamentale perché mi permette:
 - di dare informazioni aggiuntive all'LLM per aiutarlo nel suo lavoro.
 Purtroppo non sono riuscito a fare nessuno studio di ablazione che controlli quanto queste parole chiave aiutino l'LLM, ma mi sembra una intuizione ragionevole e comunque le avrei estratte in ogni caso.
 
-Per trovare le parole chiave ho usato **TF-IDF** [(Term Frequency - Inverse Document Frequency)](https://it.wikipedia.org/wiki/Tf-idf). 
-L'intuizione dietro a questo algoritmo è la seguente: una parola non è importante se è molto o poco presente in termini assoluti, ma è importante se è presente solo in questo particolare campione e assente negli altri. 
+Per trovare le parole chiave ho usato **TF-IDF** [(Term Frequency - Inverse Document Frequency)](https://it.wikipedia.org/wiki/Tf-idf).
+L'intuizione dietro a questo algoritmo è la seguente: una parola non è importante se è molto o poco presente in termini assoluti, ma è importante se è presente solo in questo particolare campione e assente negli altri.
 Questo permette di scovare per ogni documento le parole che lo identificano unicamente, considerando la loro frequenza assoluta ma anche la frequenza all'interno del singolo testo. Ad esempio, se ho due documenti diversi, uno che descrive la vita di uno scienziato, e un altro che descrive la vita dello scienziato Enrico Fermi, per entrambi la parola *scienziato* è molto importante, ma per il secondo le parole "Enrico" e "Fermi" lo rendono unico.
 
 Ecco degli esempi di parole chiave che ho estratto:
@@ -125,7 +125,7 @@ Il prompt di sistema è strutturato nella seguente maniera:
 - Regole di categorizzazione: il modello deve dare categorie di alto livello e non specifiche. Ha accesso ad una lista di categorie pre-calcolate, ma può comunque scegliere di assegnare una nuova categoria non esistente;
 - Formato dell'output: il modello deve scrivere tutto all'interno di tag xml, visto che sono semplici da parsare.
 
-Il modello ha la libertà di scegliere una classe anche se non è presente tra quelle fornite. Questo mi permette di avere un po' di flessibilità, anche perché è un dataset che conosco poco.  
+Il modello ha la libertà di scegliere una classe anche se non è presente tra quelle fornite. Questo mi permette di avere un po' di flessibilità, anche perché è un dataset che conosco poco.
 Operativamente, quando il modello sceglie una classe non presente tra quelle esistenti, viene aggiunta alla lista delle classi possibili, condizionando le future generazioni.
 
 Alla fine di questo processo, Llama ha estratto circa 142 topic. Ci sono alcuni casi in cui alcune categorie sono duplicate (singolare/plurale) ma per la visualizzazione di seguito non avrà molto peso.
@@ -221,20 +221,20 @@ Testo: {{campione.content}}
 </div>
 
 Nel plot qua sopra sono riportati i 23 topic più frequenti scelti dall'LLM.
-In generale il dataset contiene argomenti abbastanza variegati. E' interessante il grande numero di campioni marchiati con "Politica" (98). Questo è probabilmente dovuto al fatto che gran parte del testo consiste in articoli di giornale. 
-Già in questo plot si possono notare parole chiave che indicano in realtà la stessa categoria, come "Cronaca" e "Notizie". 
+In generale il dataset contiene argomenti abbastanza variegati. E' interessante il grande numero di campioni marchiati con "Politica" (98). Questo è probabilmente dovuto al fatto che gran parte del testo consiste in articoli di giornale.
+Già in questo plot si possono notare parole chiave che indicano in realtà la stessa categoria, come "Cronaca" e "Notizie".
 In una futura iterazione potrebbe aver senso fissare dei topic e impedire al modello di generare topic aggiuntivi, così che possa essere catturata una migliore distribuzione.
 
 <div class="l-page">
   <iframe src="{{ '/assets/plotly/sample_scatter.html' | relative_url }}" frameborder='0' scrolling='no' height="610" width="810" style="border: 1px dashed grey;"></iframe>
 </div>
- 
+
 Questo scatter-plot mostra la distribuzione dei campioni rispetto ai topic a cui sono stati appaiati e rispetto alla qualità del loro contenuto informativo.
 Il plot è interattivo, e si possono considerare i campioni di ogni qualità o anche un subset (magari si è interessati alla distribuzione di solo quelli con contenuto **Excellent**).
 
 La posizione del testo all'interno del plot è calcolata utilizzando un BERT italiano. Questi modelli sono in grado di ottenere in input del testo e tradurli in un vettore di numeri, e sono utilizzati anche per modellare la similarità tra testi diversi. In generale, campioni con posizioni vicine hanno contenuto simile.
 Per questo grafico in particolare, la posizione del campione dipende sia dal suo contenuto che dal suo topic.
-In particolare, il vettore della visualizzazione è una combinazione convessa del vettore del contenuto e del vettore del topic. 
+In particolare, il vettore della visualizzazione è una combinazione convessa del vettore del contenuto e del vettore del topic.
 Giocando un po' con i filtri si può notare che purtroppo la distribuzione della qualità non è migliore o peggiore attorno ad alcuni particolari topic. Al contrario, tutti i topic sembrano avere grossolanamente lo stesso rapporto di campioni di cattiva e buona qualità.
 
 Ci sono 3 motivi per cui ho scelto di considerare nella visualizzazione non solo il contenuto, ma anche il topic.
@@ -242,7 +242,7 @@ Ci sono 3 motivi per cui ho scelto di considerare nella visualizzazione non solo
 Il primo è che per qualche motivo nel mio ambiente di sviluppo [t-SNE](https://distill.pub/2016/misread-tsne/) crasha ogni volta che provo ad utilizzarlo.
 Questo algoritmo in generale dà delle buone visualizzazioni per testo e immagini, in quanto cattura relazioni non lineari tra i campioni.
 Per questo, ho ripiegato sulla PCA, ma purtroppo le prima due dimensioni spiegano solo il 14% della varianza e il plot risultava essere molto confuso.
-Considerare anche il topic mi permette di avere una visualizzazione più chiara e raggruppata attorno a dei "punti topici", mischiando il significato originale con quello del topic. Per mischiarli uso una combinazione convessa in cui mantengo il 40% degli embedding del contesto, assegnando il 60% ai topic. 
+Considerare anche il topic mi permette di avere una visualizzazione più chiara e raggruppata attorno a dei "punti topici", mischiando il significato originale con quello del topic. Per mischiarli uso una combinazione convessa in cui mantengo il 40% degli embedding del contesto, assegnando il 60% ai topic.
 
 Il secondo motivo è che non ho un BERT allenato specificatamente su questi dati e su questo task di estrazione topic. Di conseguenza le rappresentazioni non sono particolarmente ottimali, ma comunque comprendono le relazioni semantiche tra i diversi campioni.
 
