@@ -76,8 +76,7 @@ In questo contesto, i giocatori assumono il ruolo di vagabondi, in cerca di glor
 Ecco i personaggi dei miei amici.
 
 **Enrico il Piccolo**, detto **Pick**, è un procione irrequieto e chiacchierone. Proviene da una famiglia nobile che serve sotto la Marchesa, nella radura di _Pattumeride_.
-Cleptomane, prova ad arraffare qualsiasi oggetto su cui posa gli occhi. Per questo motive è stato rinnegato dalla sua famiglia ed ora è un vagabondo.
-È cleptomane.
+Cleptomane, prova ad arraffare qualsiasi oggetto su cui posa gli occhi. Per questo motivo è stato rinnegato dalla sua famiglia ed ora è un vagabondo.
 
 **Sbekku** è un corvo ronin silenzioso. Armato di tutto punto, fa subito trasparire che proviene da un passato militare. Ex comandante dell'esercito regolare del Ducato delle Aquile, ha abbandonato il suo servizio, disgustato dalla corruzione che imperversa tra le file delle forze armate delle Aquile.
 
@@ -139,7 +138,7 @@ Con una scusa un po' di bassa qualità (Jeki aveva sentito dell'odore di benzina
 Qui trovano un giovane topo che trasporta un carretto contenente la bomba. Ingenuamente, sta fumando una sigaretta.
 Per potersi avvicinare al carro devono però combattere con Bill Zampuncino.
 
-Per questo incontro ho deciso di creare una "bomba a orologeria" in senso narrativo. Ogni tanto tiravo dei dadi per il giovane con la sigaretta e, nel caso di fallimento, sarebbe inciampato e la sua sigaretta avrebbe dato fuoco alla bomba. Ovviamente ha fatto cinque successi critici di fila. Il bello di questa trovata è che mette un limite di tempo alla scena e inoltre crea un leggero sentimento di ansia sia se i giocatori ne sono consci o meno.
+Per questo incontro ho deciso di creare una "bomba a orologeria" in senso narrativo. Ogni tanto tiravo dei dadi per il giovane con la sigaretta e, nel caso di fallimento, sarebbe inciampato e la sua sigaretta avrebbe dato fuoco alla bomba. Ovviamente ha fatto cinque successi critici di fila. Il bello di questa trovata è che mette un limite di tempo alla scena e inoltre crea un leggero sentimento di ansia sia che i giocatori ne siano consci o meno.
 Infatti i giocatori avrebbero potuto valutare la situazione e scoprire che stava avvenendo questo, oppure usare il loro intuito per immaginarlo. Nel caso in cui non fosse stato chiaro per loro, comunque mi sentivano tirare dadi senza saperne il motivo. Uno dei giocatori mi ha addirittura chiesto perché li stavo tirando, se era una cosa positiva o meno, e per me questo è stato un po' il segno di una buona riuscita.
 
 La scena si è conclusa con un soldato dell'alleanza che riesce a far esplodere la bomba. A **Jeki** ed **Enrico** è stata data la possibilità di spegnere l'incendio, ma invece se la sono data a gambe.
