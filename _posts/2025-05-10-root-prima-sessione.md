@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Root, Incendi, Guerre Civili e Crimini di Guerra
-date: 2025-09-22 19:00:00
+date: 2025-10-05 9:00:00
 description:
 tags: game-design gdr scrittura
 categories: [game-design, gdr, scrittura]
@@ -14,19 +14,20 @@ Ho scoperto che mi piace davvero molto masterare e adesso so che c'è questo lat
 
 Voglio quindi condividere un po' la mia esperienza e analizzare alcune scelte narrative che ho fatto, sperando di creare una discussione su come poterle migliorare.
 
+L'articolo assume che abbiate vagamente un'idea su come funziona un gioco di ruolo (cos'è un tiro, cos'è un successo, chi è il master), mentre mi impegnerò a spiegare, se rilevanti, alcune specificità di Root.
+
 ## Root: Il Gioco di Ruolo
 Il gioco è ambientato in questo bosco dove vivono animaletti antropomorfi.
 Recentemente una guerra civile ha completamente distrutto tutte le istituzioni, e i cittadini si sono finalmente abituati a questo vuoto politico.
-
 Ora diverse fazioni stanno provando a contendersi il controllo dei boschi.
 
-La Marchesa De Gattis proviene da una terra lontana e fa parte della nobiltà dell'impero dei gatti. Nelle radure che è riuscita a controllare ha portato ordine e sicurezza, ma si aspetta anche totale obbedienza dai cittadini.
+La **Marchesa De Gattis** proviene da una terra lontana e fa parte della nobiltà dell'impero dei gatti. Nelle radure che è riuscita a controllare ha portato ordine e sicurezza, ma si aspetta anche totale obbedienza dai cittadini.
 
-Il Ducato delle Aquile è la fazione che controllava precedentemente il bosco. Le fazioni del ducato si sono annichilite a vicenda durante la guerra civile e puntano a riottenere il controllo dell'intera radura.
+Il **Ducato delle Aquile** è la fazione che controllava precedentemente il bosco. Le fazioni del ducato si sono annichilite a vicenda durante la guerra civile e puntano a riottenere il controllo dell'intera radura.
 
-La guerra civile ha sconquassato i boschi, ma i suoi cittadini hanno scoperto una nuova libertà. L'obiettivo dell'Alleanza dei Boschi è quello di cacciare i vecchi e nuovi padroni e riuscire finalmente a non servire più nessuno.
+La guerra civile ha sconquassato i boschi, ma i suoi cittadini hanno scoperto una nuova libertà. L'obiettivo dell'**Alleanza dei Boschi** è quello di cacciare i vecchi e nuovi padroni e riuscire finalmente a non servire più nessuno.
 
-In questo contesto si inseriscono i vagabondi, cittadini senza una stabile dimora che vagano per le radure e risolvono (o creano) problemi. Un vagabondo è in generale una figura un po' fuori dalla società e generalmente è un furfante. Tuttavia dalle loro schiere possono anche emergere eroi (ovviamente diverse fazioni avranno diverse opinioni sulle tue gesta).
+In questo contesto si inseriscono i **Vagabondi**, cittadini senza una stabile dimora che vagano per le radure e risolvono (o creano) problemi. Un vagabondo è in generale una figura un po' fuori dalla società e generalmente è un furfante. Tuttavia dalle loro schiere possono anche emergere eroi (ovviamente diverse fazioni avranno diverse opinioni sulle tue gesta).
 
 ## La Mia Avventura
 Visto che era la prima volta che guidavo una partita di un gioco di ruolo, ho deciso di partire da un'avventura già fatta data in dotazione dal manuale.
@@ -57,11 +58,11 @@ Spione Dubois, capo spia della Marchesa, è preoccupato per Michele, visto che n
 ### Amore e Ribellione
 La città è tappezzata di poster che recitano "Capitan Corvofalco: Vivo o Morto". Uno schizzo di un topo con un ghigno malvagio e occhi rossi copre il volantino. Il disegno è comicamente esagerato.
 
-Pochi sanno però che Capitan Corvofalco è un pescatore convinto dall'alleanza a diventare una figura di riferimento per i cittadini scontenti. Il suo ruolo è quello di recitare la parte del capo dell'alleanza, per dare speranza e motivare la lotta della resistenza.
+Pochi sanno però che Capitan Corvofalco è un semplice pescatore di nome *Carlo Dolcerba*. È stato convinto dall'Alleanza a diventare una figura di riferimento per i cittadini scontenti. Il suo ruolo è quello di recitare la parte del capo dell'Alleanza, per dare speranza e motivare la lotta della resistenza.
 
-Diocleziano Sciani, futuro marito, vuole convincerlo ad abbandonare il suo ruolo e scappare in un'altra radura, lontani dai problemi politici che li affliggono.
+Diocleziano Sciani, suo futuro marito, vuole convincerlo ad abbandonare il ruolo e scappare in un'altra radura, lontani dai problemi politici che li affliggono.
 
-Tuttavia Michele è stanco di fingere e vorrebbe uscire allo scoperto e tornare a vivere con il suo partner e la sua famiglia, vivendo una vita tranquilla. Tuttavia non può farlo poiché l'alleanza lo ha convinto che se si ritirasse proprio adesso, la sua famiglia finirebbe in pericolo, visto che la Marchesa li arresterebbe e li torturerebbe.
+Tuttavia Carlo è stanco di fingere e vorrebbe uscire allo scoperto per tornare a vivere con il suo partner e la sua famiglia, vivendo una vita tranquilla. Non può farlo perché l'Alleanza lo ha convinto che, se si ritirasse proprio adesso, la sua famiglia finirebbe in pericolo: la Marchesa li arresterebbe e li torturerebbe.
 
 ## Il Mio Gruppo
 In questo contesto, i giocatori assumono il ruolo di vagabondi, in cerca di gloria o anche solo di un modo per riuscire a mangiare qualcosa la sera.
@@ -84,7 +85,8 @@ Gli avvenimenti della one-shot sono avvenuti nel corso di due sedute, entrambe d
 Per la prima seduta mi sono preoccupato più di memorizzare i diversi fatti e il procedere dei quattro conflitti, immaginando soprattutto come avrei potuto far accedere i giocatori alle singole missioni. Da parte mia non c'è stato un grande design, ma più un lavoro di studio delle meccaniche e della storia.
 
 Col senno di poi, la principale difficoltà che ho avuto è stata quella di non conoscere la caratterizzazione dei personaggi giocanti. In Root i giocatori sono spinti a soddisfare due diverse meccaniche: la Natura e le Motivazioni.
-Una volta che la Natura è soddisfatta, le risorse mentali del personaggio sono nuovamente utilizzabili. Ad esempio, un giocatore pacifista sente la stanchezza scomparire quando risolve un conflitto in maniera non violenta. Un ragionamento simile riguarda le Motivazioni.
+La Natura (come Pacifista, Curioso o Combattente) è caratteristica della classe del personaggio e, quando viene soddisfatta, permette di resettare il tracciato di alcune risorse mentali del vagabondo.
+Le Motivazioni invece sono più generiche e indicano quali sfide, una volta superate, permettono di aumentare di livello.
 
 Conoscere in anticipo queste informazioni permette di creare situazioni ad hoc in cui possono essere più o meno soddisfatte, e ho notato che i giocatori sono molto desiderosi di innescare le proprie inclinazioni.
 
@@ -99,12 +101,13 @@ Durante la fuga, visto che avevano ottenuto la fiducia dell'alleanza, sono stati
 Alla fine della prima sessione avevo avuto come feedback la richiesta di avere una mappa esplicita dei luoghi in cui avvengono gli eventi.
 Visto che mi sono ridotto all'ultimo ho disegnato l'obbrobrio riportato qua sotto.
 
-{% include figure.liquid loading="eager" path="assets/img/gdr/cava_beltranda_mappa.png" class="img-fluid rounded z-depth-1" %}
+{% include figure.liquid loading="eager" path="assets/img/gdr/cala_beltranda_mappa.png" class="img-fluid rounded z-depth-1" %}
 <div class="caption" style="font-size: 18px; font-style: italic;">
     La mia opera magna, pennarelli su tela. Il pezzo di carta tagliato nell'angolo in basso a sinistra bilancia la composizione, in un contrapposto che coinvolge il lago, la piazza e il meraviglioso porto.
 </div>
 
-Con mia grande sorpresa, la mappa di Cava Beltranda ha reso molto più coinvolti i giocatori, nonostante la qualità infima del disegno.
+Con mia grande sorpresa, la mappa di Cala Beltranda ha reso molto più coinvolti i giocatori, nonostante la qualità infima del disegno.
+Immagino che avere un oggetto fisico da indicare mentre si parla semplifichi molto la comunicazione. Forse io non ne sentivo la necessità perché ho passato tanto tempo a leggere e immaginare la storia. Un giocatore invece ha tante cose per la testa e un aiuto visivo esterno evita di doverlo caricare con troppe informazioni e descrizioni.
 È stato molto bello vederli organizzare i loro movimenti indicando i diversi luoghi chiave in cui i conflitti si stavano svolgendo.
 
 Per questa sessione ho creato delle missioni un po' più personalizzate. In particolare, due dei personaggi avevano come motivazione "Scappare da morte certa". Per questo motivo ho organizzato due grandi conflitti:
@@ -115,7 +118,7 @@ Per questa sessione ho creato delle missioni un po' più personalizzate. In part
 
 L'esecuzione del capitano era un grande avvenimento, in quanto i personaggi avevano avuto modo di appassionarsi alla sua storia della sessione precedente. In particolare, Sbekku ha fatto tutto il possibile per salvarlo, visto che per sua natura prova a evitare le ingiustizie e a proteggere gli indifesi.
 
-L'esecuzione avviene nella fortezza di fronte al quartier generale della comandante Astrid Montemagno. La piazza è piena di persone, ognuna con un'opinione diversa sull'esecuzione. Nella mia testa, i giocatori avrebbero potuto causare l'inizio di una rissa oppure riuscire a placare una folla inferocita. Se qualcosa fosse andato in maniera particolarmente imprevista, prevedevo di far uscire dalla fortezza la comandante, a cui avevo assegnato delle statistiche di combattimento ridicole, in grado di tramortire un vagabondo in un colpo.
+L'esecuzione avviene nella piazza di fronte al quartier generale della comandante Astrid Montemagno. La piazza è piena di persone, ognuna con un'opinione diversa sull'esecuzione. Nella mia testa, i giocatori avrebbero potuto causare l'inizio di una rissa oppure riuscire a placare una folla inferocita. Se qualcosa fosse andato in maniera particolarmente imprevista, prevedevo di far uscire dalla fortezza la comandante, a cui avevo assegnato delle statistiche di combattimento ridicole, in grado di tramortire un vagabondo in un colpo.
 
 Alla fine Sbekku ha provato a convincere (invano) i gatti a salvare la vita di Corvofalco. Fa questo con un discorso pubblico, rivolto a tutti i cittadini. Purtroppo per lui, l'Alleanza ha bisogno di un martire e, a seguito di un tiro con successo, Corvofalco viene colpito da una freccia volante.
 La scena si chiude con Sbekku che se ne va via mentre in piazza le fazioni combattono.
@@ -134,5 +137,6 @@ Il bello della bomba in sé è che l'esplosione si è sentita in piazza e ha cau
 
 ## Conclusioni
 
+Alla fine la sessione è finita in maniera tragica. La comandante Astrid Montemagno ha indetto la legge marziale e ha mobilitato l'esercito, e l'esplosione della bomba ha causato un incendio che ha raso al suolo un quarto della cittadina. I Vagabondi sono dovuti scappare, visto che sono riusciti a inimicarsi tutte le fazioni coinvolte, persino i semplici cittadini. Per ragioni di tempo, le missioni **Tesoro nelle Profondità** e **Catturare la Spia** non sono state affrontate dai giocatori, e quindi sono procedute in maniera indipendente contemporaneamente a questi avvenimenti.
+
 Non pensavo mi sarei divertito così tanto. La cosa che mi ha sorpreso è che fare il master durante la sessione non è così diverso da giocare. Hai comunque tante cose da tenere a mente, ma la componente recitativa non viene persa. Al posto di esprimersi con un personaggio, ci si esprime legando gli avvenimenti di una storia e assecondando o meno le intuizioni dei giocatori.
-La grande difficoltà che ho trovato a questo giro è stato dover decidere cosa rendere deterministico o legato a un tiro di dado.
