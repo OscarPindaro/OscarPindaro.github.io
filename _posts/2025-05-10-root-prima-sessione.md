@@ -16,6 +16,7 @@ Voglio quindi condividere un po' la mia esperienza e analizzare alcune scelte na
 L'articolo assume che abbiate vagamente un'idea di come funziona un gioco di ruolo (cos'è un tiro, cos'è un successo, chi è il master), mentre mi impegnerò a spiegare, se rilevanti, alcune specificità di Root.
 
 ## Root: Il Gioco di Ruolo
+
 Il gioco è ambientato in un bosco dove vivono animaletti antropomorfi.
 Recentemente una guerra civile ha completamente distrutto tutte le istituzioni, e i cittadini si sono finalmente abituati a questo vuoto politico.
 Ora diverse fazioni stanno provando a contendersi il controllo dei boschi.
@@ -29,6 +30,7 @@ La guerra civile ha sconquassato i boschi, ma i suoi cittadini hanno scoperto un
 In questo contesto si inseriscono i **Vagabondi**, cittadini senza una stabile dimora che vagano per le radure e risolvono (o creano) problemi. Un vagabondo è in generale una figura un po' fuori dalla società e generalmente è un furfante. Tuttavia dalle loro schiere possono anche emergere eroi (ovviamente diverse fazioni avranno opinioni diverse sulle loro gesta).
 
 ## La Mia Avventura
+
 Visto che era la prima volta che guidavo una partita di un gioco di ruolo, ho deciso di partire da un'avventura già fatta, data in dotazione dal manuale.
 Avevo già giocato a questa partita come giocatore, quindi sapevo già cosa aspettarmi e infatti sono riuscito a improvvisare abbastanza agilmente.
 
@@ -37,10 +39,12 @@ Avevo già giocato a questa partita come giocatore, quindi sapevo già cosa aspe
 Cala Beltranda sarà, ai fini dell'avventura, il teatro di quattro conflitti.
 
 ### Tesoro nelle Profondità
+
 La fregata degli approvvigionamenti della Marchesa è stata attaccata dai ribelli. Questa è riuscita a scappare dallo scontro, ma purtroppo durante la fuga è affondata e nessun membro del suo equipaggio è riuscito a raggiungere la riva. Sulla fregata c'era un tesoro di inestimabile valore: la paga dei soldati. Nessuno sa dove questa nave sia affondata e tutte le fazioni si stanno impegnando per trovare la posizione della fregata e recuperare il tesoro.
 Astrid Montemagno ha promesso il 20% del tesoro a chi riuscirà a trovare e riconsegnare le monete.
 
 ### Pronto a Esplodere
+
 L'Alleanza dei Boschi è ormai da molto tempo coinvolta in azioni di guerriglia per indebolire il governo locale.
 Tuttavia **Zafferana Buonacre**, il capo segreto della fazione, pensa che sia necessario un gesto grandioso per spezzare il morale degli occupanti e riottenere la libertà.
 L'obiettivo della resistenza è ottenere la resa totale della Marchesa.
@@ -49,12 +53,14 @@ Per questo motivo, da tempo è stata completata una bomba da piazzare all'ospeda
 Tuttavia ha bisogno di trovare qualcuno disposto a posizionare e armare questa bomba. Chissà se uno dei vagabondi sarà all'altezza dell'impresa...
 
 ### Catturare la Spia
+
 **Michele Lamberto**, topo pescatore sotto copertura, è riuscito a infiltrarsi tra i ranghi dell'Alleanza come spia della Marchesa.
 Dopo molto lavoro è riuscito a intrufolarsi negli uffici dei capi dell'alleanza e a impossessarsi di alcuni piani. Tuttavia per la fretta ha lasciato delle tracce e Bill Zampuncino, braccio armato della resistenza, sospetta di una talpa. Ha raccolto in un luogo le tre persone più sospette, tra cui Michele.
 
 **Spione Dubois**, capo spia della Marchesa, è preoccupato per Michele, visto che non si è presentato all'ultimo incontro di controllo. Qualcuno dovrà aiutare la Marchesa a salvare uno dei suoi informatori chiave.
 
 ### Amore e Ribellione
+
 La città è tappezzata di poster che recitano "Capitan Corvofalco: Vivo o Morto". Uno schizzo di un topo con un ghigno malvagio e occhi rossi copre il volantino. Il disegno è comicamente esagerato.
 
 Pochi sanno però che Capitan Corvofalco è un semplice pescatore di nome **Carlo Dolcerba**. È stato convinto dall'Alleanza a diventare una figura di riferimento per i cittadini scontenti. Il suo ruolo è recitare la parte del capo dell'Alleanza, per dare speranza e motivare la lotta della resistenza.
@@ -64,11 +70,12 @@ Pochi sanno però che Capitan Corvofalco è un semplice pescatore di nome **Carl
 Tuttavia Carlo è stanco di fingere e vorrebbe uscire allo scoperto per tornare a vivere con il suo partner e la sua famiglia, vivendo una vita tranquilla. Non può farlo perché l'Alleanza lo ha convinto che, se si ritirasse proprio adesso, la sua famiglia finirebbe in pericolo: la Marchesa li arresterebbe e li torturerebbe.
 
 ## Il Mio Gruppo
+
 In questo contesto, i giocatori assumono il ruolo di vagabondi, in cerca di gloria o anche solo di un modo per riuscire a mangiare qualcosa la sera.
 
 Ecco i personaggi dei miei amici.
 
-**Enrico il Piccolo**, detto **Pick**, è un procione irrequieto e chiacchierone. Proviene da una famiglia nobile che serve sotto la Marchesa, nella radura di *Pattumeride*.
+**Enrico il Piccolo**, detto **Pick**, è un procione irrequieto e chiacchierone. Proviene da una famiglia nobile che serve sotto la Marchesa, nella radura di _Pattumeride_.
 Cleptomane, prova ad arraffare qualsiasi oggetto su cui posa gli occhi. Per questo motive è stato rinnegato dalla sua famiglia ed ora è un vagabondo.
 È cleptomane.
 
@@ -77,6 +84,7 @@ Cleptomane, prova ad arraffare qualsiasi oggetto su cui posa gli occhi. Per ques
 **Jeki** è un coniglio da un passato malavitoso. Ha sempre avuto una vita di stenti e ora è in fuga a seguito dell'omicidio di un tenente della Marchesa. Gli ha rubato il cappotto, che ora indossa con baldanzosa arroganza.
 
 ## La Storia
+
 Gli avvenimenti della one-shot sono avvenuti nel corso di due sedute, entrambe da circa tre ore (compresa la creazione dei personaggi).
 
 ### Prima Sessione
@@ -94,22 +102,25 @@ Creare l'accesso a quattro missioni contemporaneamente è stato un lavoraccio. B
 Nel mio caso, l'accesso alla missione **Amore e Ribellione** lo ho reso molto esplicito, comunicando a un giocatore che aveva notato qualcosa brillare in un buco in un albero. Come soluzione non mi è piaciuta molto, in quanto è come se la narrazione si fosse sospesa. Detto questo, magari è un ottimo modo per accelerare l'accesso agli avvenimenti principali.
 
 In un altro caso, all'interno di una taverna uno dei giocatori ha provato a scippare un commensale, fallendo miseramente. Questo ha messo in allerta alcune guardie che passavano di là, ma i giocatori sono stati salvati da dei guerriglieri sotto copertura dell'Alleanza dei Boschi con cui avevano precedentemente stretto amicizia.
-Durante la fuga, visto che avevano ottenuto la fiducia dell'alleanza, sono stati portati nel covo, dando accesso alle missioni della bomba e di Capitan Corvofalco. Sono molto fiero di questa trovata, perché gli avvenimenti sono stati molto spontanei e si sono basati sulla cleptomania di *Enrico*.
+Durante la fuga, visto che avevano ottenuto la fiducia dell'alleanza, sono stati portati nel covo, dando accesso alle missioni della bomba e di Capitan Corvofalco. Sono molto fiero di questa trovata, perché gli avvenimenti sono stati molto spontanei e si sono basati sulla cleptomania di _Enrico_.
 
 ### Seconda Sessione
+
 Alla fine della prima sessione avevo avuto come feedback la richiesta di avere una mappa esplicita dei luoghi in cui avvengono gli eventi.
 Visto che mi sono ridotto all'ultimo ho disegnato l'obbrobrio riportato qua sotto.
 
 {% include figure.liquid loading="eager" path="assets/img/gdr/cala_beltranda_mappa.png" class="img-fluid rounded z-depth-1" %}
+
 <div class="caption" style="font-size: 18px; font-style: italic;">
     La mia opera magna, pennarelli su tela. Il pezzo di carta tagliato nell'angolo in basso a sinistra bilancia la composizione, in un contrapposto che coinvolge il lago, la piazza e il meraviglioso porto.
 </div>
 
 Con mia grande sorpresa, la mappa di Cala Beltranda ha reso molto più coinvolti i giocatori, nonostante la qualità infima del disegno.
-Immagino che avere un oggetto fisico da indicare mentre si parla semplifichi molto la comunicazione. Forse io non ne sentivo la necessità perché ho passato tanto tempo a leggere e immaginare la storia, mentre un giocatore  ha tante cose per la testa e un aiuto visivo esterno evita di doverlo caricare con troppe informazioni e descrizioni.
+Immagino che avere un oggetto fisico da indicare mentre si parla semplifichi molto la comunicazione. Forse io non ne sentivo la necessità perché ho passato tanto tempo a leggere e immaginare la storia, mentre un giocatore ha tante cose per la testa e un aiuto visivo esterno evita di doverlo caricare con troppe informazioni e descrizioni.
 È stato molto bello vederli organizzare i loro movimenti indicando i diversi luoghi chiave in cui i conflitti si stavano svolgendo.
 
 Per questa sessione ho creato delle missioni un po' più personalizzate. In particolare, due dei personaggi avevano come motivazione "Scappare da morte certa". Per questo motivo ho organizzato due grandi conflitti:
+
 - L'esecuzione di Capitan Corvofalco in pubblica piazza
 - Il trasporto della bomba verso l'ospedale
 
@@ -123,6 +134,7 @@ Alla fine Sbekku ha provato a convincere (invano) i gatti a salvare la vita di C
 La scena si chiude con Sbekku che se ne va via mentre in piazza le fazioni combattono.
 
 ### Trasporto della Bomba
+
 Con una scusa un po' di bassa qualità (Jeki aveva sentito dell'odore di benzina venire dai vicoli della città), gli altri giocatori sono stati portati a esplorare il resto della città.
 Qui trovano un giovane topo che trasporta un carretto contenente la bomba. Ingenuamente, sta fumando una sigaretta.
 Per potersi avvicinare al carro devono però combattere con Bill Zampuncino.

@@ -16,6 +16,7 @@ Minacciati dal dover esprimere un'idea, alzate questo scudo, salvandovi dalla tr
 Sì. Siamo d'accordo. Ognuno fa quello che vuole. Ma tu che cosa pensi?
 
 {% include figure.liquid loading="eager" path="assets/img/opinioni/falcon_punch.png" class="img-fluid rounded z-depth-1" %}
+
 <div class="caption" style="font-size: 18px; font-style: italic;">
     "eh ma ognuno fa quello che vuo-"
 </div>

@@ -9,14 +9,12 @@ featured: true
 thumbnail: /assets/img/dune/cover.png
 ---
 
-
-
 Mi capita molto frequentemente di leggere e sentire opinioni alquanto fantasiose su sviluppo software e LLM. Opinioni con cui non sono mai particolarmente d'accordo.
-Secondo questi pescivendoli, l'utilizzo di un LLM permette di raddoppiare... no anzi, **triplicare**, no... che dico? ***CENTUPLICARE*** la produttività di un programmatore.
+Secondo questi pescivendoli, l'utilizzo di un LLM permette di raddoppiare... no anzi, **triplicare**, no... che dico? **_CENTUPLICARE_** la produttività di un programmatore.
 
 E io rimango basito.
 
-Inizialmente mi preoccupavo. *"Cavolo, ma sono così stupido? Mi sto perdendo qualcosa?"*
+Inizialmente mi preoccupavo. _"Cavolo, ma sono così stupido? Mi sto perdendo qualcosa?"_
 
 Ma ora sono rinsavito e la vivo decisamente meglio.
 
@@ -37,11 +35,12 @@ Mi preoccupo perché non ci sono abbastanza mani per contare il numero di volte 
 
 Dopo una lunga riflessione, penso di essere in grado di spiegare questo distacco in due maniere diverse.
 
-La prima è che a quanto pare ho il dono della calma, della compostezza e della morigeratezza. Il mio sospetto è che in realtà io e il mio compagno vibe coder abbiamo entrambi la stessa identica esperienza, ma per qualche motivo ha su di lui un effetto ottanico e rinvigorente, mentre a me suona tutto... *normale*?
+La prima è che a quanto pare ho il dono della calma, della compostezza e della morigeratezza. Il mio sospetto è che in realtà io e il mio compagno vibe coder abbiamo entrambi la stessa identica esperienza, ma per qualche motivo ha su di lui un effetto ottanico e rinvigorente, mentre a me suona tutto... _normale_?
 
 La seconda spiegazione è che il mio caro compare evidentemente rispetto a prima sta effettivamente producendo 100 volte tanto. Se è questo il caso (non lo sapremo mai), possiamo solo sperare che non gli vada mai via la connessione.
 
 {% include figure.liquid loading="eager" path="assets/img/dune/bonk.png" class="img-fluid rounded z-depth-1" %}
+
 <div class="caption" style="font-size: 18px; font-style: italic;">
     Sam Altman... sarai il primo a essere reclamato dallo Jihad Butleriano
 </div>
