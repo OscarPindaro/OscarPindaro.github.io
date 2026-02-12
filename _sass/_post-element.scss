@@ -1,0 +1,91 @@
+/**
+ * Post Element Component
+ */
+
+// Variables for easy experimentation
+$post-element-spacing: $spacing-unit;
+$post-element-image-width: 200px;  // adjust this easily
+$post-element-border: 1px solid $grey-color-light;  // for card style
+
+// Base post element - NO spacing/borders here, modifiers handle that
+.post-element {
+  // Empty base, modifiers add styling
+}
+
+// Only use flex when image exists
+.post-element:has(.post-element__image) {
+  display: flex;
+  gap: $spacing-unit * 0.5;
+}
+
+// Title styles
+.post-element__title {
+  margin-bottom: $spacing-unit * 0.25;  // Space below title before summary
+  margin-top: 0;  // Remove default h3 top margin if any
+
+  @include relative-font-size(1.5);
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.post-element__link {
+  color: $brand-color;
+
+  &:visited {
+    color: darken($brand-color, 15%);
+  }
+
+  &:hover {
+    color: $text-color;
+  }
+}
+
+// Summary/excerpt styles
+.post-element__summary {
+  font-style: italic;
+  margin-bottom: $spacing-unit * 0.25;
+}
+
+// Date styles
+.post-element__date {
+  font-size: $small-font-size;
+  color: $grey-color;
+  display: block;
+}
+
+// Image styles
+.post-element__image {
+  width: 200px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+// Hide images on mobile screens
+@include media-query($on-palm) {
+  .post-element__image {
+    display: none;
+  }
+}
+
+// Card style - bordered box with padding and shadow
+.post-element--card {
+  padding: $spacing-unit * 0.75;
+  border: 1px solid $grey-color-light;
+  border-radius: 4px;
+  background-color: $background-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: $spacing-unit * 1.5;
+}
+
+// List style - minimal with just a separator
+.post-element--list {
+  padding-bottom: $spacing-unit * 0.5;
+  border-bottom: 3px solid $grey-color-light;
+  margin-bottom: $spacing-unit * 0.5;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}

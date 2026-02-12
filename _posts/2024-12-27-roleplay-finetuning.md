@@ -6,10 +6,8 @@ description: Un framework per convertire personaggi in Language Models
 tags: llm ai roleplay
 categories: [llm, roleplay]
 featured: true
-toc:
-  sidebar: left
+thumbnail: assets/img/limone32_bordo_colorato.png
 tabs: true
-thumbnail: /assets/img/limone32_bordo_colorato.png
 ---
 
 ## Cos'è LeMoNPC?

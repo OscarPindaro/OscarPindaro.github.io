@@ -1,0 +1,41 @@
+---
+layout: default
+title: Pensierini
+---
+
+<h1>Pensierini</h1>
+
+{%- if site.pensierini.size > 0 -%}
+  <ul class="pensierini-list">
+    {%- for pensierino in site.pensierini -%}
+      <li class="pensierino-element--list" id="pensierino-{{ pensierino.title | slugify }}">
+        {%- include my_includes/pensierino-element.html pensierino=pensierino -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.pensierino-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Get the full URL with hash
+      const url = window.location.origin + window.location.pathname + this.getAttribute('href');
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(url).then(() => {
+        // Add visual feedback
+        this.classList.add('copied');
+
+        // Remove the class after animation completes
+        setTimeout(() => {
+          this.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy:', err);
+      });
+    });
+  });
+});
+</script>

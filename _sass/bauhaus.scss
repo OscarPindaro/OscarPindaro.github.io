@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+// Brutalist variables - override minima defaults
+$base-font-family: "Courier New", Courier, monospace !default;
+$base-font-size: 16px !default;
+$base-font-weight: 400 !default;
+$small-font-size: $base-font-size * 0.875 !default;
+$base-line-height: 1.4 !default;
+$summary-line-height: 1.6 !default;
+$divider-thickness: 3px !default;
+
+$spacing-unit: 30px !default;
+
+// bauhaus colors - pure and stark
+$black: #261D11;
+$bau_white: #fef8ec;
+$white: #ffffff;
+$red: #DD033D;
+$pink: #E03459;
+$coral: #E8654A;
+$yellow: #FDC600;
+$yellow-dark: #C9A500;
+$green: #00825a;
+$blue: #0477BF;
+$purple: #876abd;
+
+$text-color: $black !default;
+$background-color: $bau_white !default;
+$brand-color: $red !default;
+
+$grey-color: #777 !default;
+$grey-color-light: #BBBBBB !default;
+$grey-color-dark: #444444 !default;
+$table-text-align: left !default;
+
+$content-width: 930px !default;
+$on-palm: 600px !default;
+$on-laptop: 800px !default;
+
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+@mixin relative-font-size($ratio) {
+  font-size: $base-font-size * $ratio;
+}
+
+@import
+  "bauhaus/mixins",
+  "bauhaus/base",
+  "bauhaus/layout",
+  "bauhaus/syntax-highlighting",
+  "bauhaus/post-element",
+  "bauhaus/pensierino.scss"
+;

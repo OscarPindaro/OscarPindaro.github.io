@@ -39,8 +39,9 @@ La prima è che a quanto pare ho il dono della calma, della compostezza e della 
 
 La seconda spiegazione è che il mio caro compare evidentemente rispetto a prima sta effettivamente producendo 100 volte tanto. Se è questo il caso (non lo sapremo mai), possiamo solo sperare che non gli vada mai via la connessione.
 
-{% include figure.liquid loading="eager" path="assets/img/dune/bonk.png" class="img-fluid rounded z-depth-1" %}
-
-<div class="caption" style="font-size: 18px; font-style: italic;">
-    Sam Altman... sarai il primo a essere reclamato dallo Jihad Butleriano
-</div>
+{% include figure.liquid
+    loading="eager"
+    path="assets/img/dune/bonk.png"
+    class="img-fluid rounded z-depth-1"
+    caption = "Sam Altman... sarai il primo a essere reclamato dallo Jihad Butleriano"
+%}

@@ -15,11 +15,15 @@ Minacciati dal dover esprimere un'idea, alzate questo scudo, salvandovi dalla tr
 
 Sì. Siamo d'accordo. Ognuno fa quello che vuole. Ma tu che cosa pensi?
 
-{% include figure.liquid loading="eager" path="assets/img/opinioni/falcon_punch.png" class="img-fluid rounded z-depth-1" %}
+{% include figure.liquid
+    loading="eager"
+    path="assets/img/opinioni/falcon_punch.png"
+    class="img-fluid rounded z-depth-1"
+    caption="eh ma ognuno fa quello che vuo-"
+    max-width="600px"
+    center=true
+%}
 
-<div class="caption" style="font-size: 18px; font-style: italic;">
-    "eh ma ognuno fa quello che vuo-"
-</div>
 
 In realtà, mi rendo conto che c'è in giro gente che ti chiede cosa pensi e freme al solo pensiero di mandarti a cagare appena scopre che non sei d'accordo con loro.
 È naturale quindi che questa neutralità spiccia emerga come meccanismo di difesa per svincolarsi da conversazioni fastidiose e sterili.

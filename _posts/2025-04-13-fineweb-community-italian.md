@@ -12,7 +12,9 @@ tabs: true
 thumbnail: /assets/img/limone32_bordo_colorato.png
 pretty_table: true
 related_publications: true
+summary: "Uno studio su Fineweb-C, il dataset per la community di HuggingFace che permette di avere dati di qualità in ogni lingua"
 ---
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
 Allo stato attuale, la lingua principale parlata dagli LLM è l'inglese, mentre altre lingue sono molto più marginali e spesso trascurate dai creatori di modelli.
 
@@ -34,7 +36,7 @@ La penuria di dataset open in lingua italiana rende lo sviluppo di modelli migli
 
 ## Fineweb-Edu
 
-Nel maggio 2024 HuggingFace ha rilasciato Fineweb {% cite fineweb %}, un dataset di 15 trilioni (!!!) di token in lingua inglese.
+Nel maggio 2024 HuggingFace ha rilasciato Fineweb, un dataset di 15 trilioni (!!!) di token in lingua inglese.
 Il dataset è stato creato a partire da [CommonCrawl](https://commoncrawl.org/), un dump di tutti i contenuti presenti su internet fino a quel momento.
 Questo dataset contiene il codice sorgente di moltissime pagine web, e quindi HuggingFace ha dovuto innanzitutto trasformarlo in un formato leggibile da LLM e esseri umani.
 

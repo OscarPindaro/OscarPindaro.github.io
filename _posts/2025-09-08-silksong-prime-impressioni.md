@@ -21,11 +21,13 @@ Non sono da ignorare anche le dimensioni della protagonista: a occhio mi sembra 
 
 Per quel che riguarda il movimento, mi sembra molto più scattante e rapido, ma magari è una mia impressione.
 Ho particolarmente apprezzato il salto "fluttuante", come un pallone aerostatico: mi ricorda un sacco una meccanica di _The Legend of Zelda: The Minish Cap_, che ti permette di sorvolare la mappa in presenza di tornado. Inoltre rende molto più semplice muoversi su quelle maledette bacche rimbalzine.
-{% include figure.liquid loading="eager" path="assets/img/silksong/link_parachute.png" class="img-fluid rounded z-depth-1" %}
+{% include figure.liquid
+    loading="eager"
+    path="assets/img/silksong/link_parachute.png"
+    class="img-fluid rounded z-depth-1"
+    caption="Legend of Zelda: The Minish Cap: Link può planare grazie al suo cappello"
+%}
 
-<div class="caption" style="font-size: 18px; font-style: italic;">
-    Legend of Zelda: The Minish Cap: Link può planare grazie al suo cappello
-</div>
 
 ### Nuove Armi
 

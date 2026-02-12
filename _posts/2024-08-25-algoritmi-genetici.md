@@ -1,16 +1,14 @@
 ---
 layout: post
-title: Algoritmi Genetici e le 8 regine
+title: Algoritmi Genetici e Le 8 Regine
 date: 2024-09-30 18:00:00
 description: Modellare utilizzando algoritmi genetici, applicato al problema delle 8 regine
 tags: matematica code
 categories: animations
 featured: true
 thumbnail: /assets/gif/gen_alg_eight_queens/QueenAttacking_ManimCE_v0.18.1.gif
+summary: Gli _algoritmi genetici_ sono degli algoritmi il cui funzionamento si ispira al processo di _selezione naturale_, in cui gli individui di una popolazione continuano a cambiare e a riprodursi.
 ---
-
-## Introduzione
-
 Gli _algoritmi genetici_ sono una classe di algoritmi utilizzati per prototipare rapidamente soluzioni a problemi complessi. Il loro funzionamento si ispira al processo di _selezione naturale_, in cui gli individui di una popolazione continuano a cambiare e a riprodursi. Solo gli individui più adatti riescono a sopravvivere.
 
 Godono di grande popolarità, in quanto il loro funzionamento è molto intuitivo e sono molto semplici da progettare e implementare. Infatti, permettono di prototipare rapidamente soluzioni di qualità discreta a problemi più o meno difficili.
@@ -23,11 +21,12 @@ Per spiegare il loro funzionamento, userò come esempio il problema delle 8 regi
 La "difficoltà" del problema consiste nel fatto che le regine minacciano gli altri pezzi che si trovano sulla stessa riga, colonna o diagonali. Tradizionalmente il problema viene risolto utilizzando un algoritmo _Depth-First Search (DFS)_ di backtracking.
 
 <div class="row mt-3">
-    {% include figure.liquid loading="eager" path="/assets/gif/gen_alg_eight_queens/QueenAttacking_ManimCE_v0.18.1.gif" class="img-fluid rounded z-depth-1" %}
+    <img src="{{'assets/gif/gen_alg_eight_queens/QueenAttacking_ManimCE_v0.18.1.gif' | relative_url }}" alt="Queen attacking pattern" style="width: 100%; border-radius: 4px;">
 </div>
 <div class="caption" style="font-size: 18px; font-style: italic;">
     La regina è un pezzo molto aggressivo. Può attaccare in orizzontale, verticale e diagonale e muoversi di quanti passi vuole.
 </div>
+
 
 In DFS, le regine vengono posizionate una alla volta, in maniera tale che l'ultima regina non minacci nessuna delle precedenti, fino a quando non si trova una soluzione o non è possibile posizionare una regina. In questo ultimo caso, l'ultima mossa viene annullata, e si prova in maniera ricorsiva a cambiare le posizioni delle precedenti regine fino alla risoluzione. Questo algoritmo è basato su _state space search (ricerca nello spazio di stato)_, in cui vengono provate tutte le possibili configurazioni.
 
@@ -94,7 +93,7 @@ Il processo di _mutazione_ seleziona una riga a caso e cambia la posizione della
 Questo mutazione può essere considerato un _bit-flip_, in quanto la scacchiera rappresenta le posizioni in bit e lo spostamento della regina consiste nel cambiamento di due celle da 0 a 1 e viceversa.
 
 <div class="row mt-3">
-    {% include figure.liquid loading="eager" path="/assets/gif/gen_alg_eight_queens/QueenMutating_ManimCE_v0.18.1.gif" class="img-fluid rounded z-depth-1" %}
+    <img src="{{ 'assets/gif/gen_alg_eight_queens/QueenMutating_ManimCE_v0.18.1.gif' | relative_url}}" alt="Queen mutation sequence" style="width: 100%; border-radius: 4px;">
 </div>
 <div class="caption" style="font-size: 18px; font-style: italic;">
     Una sequenza di mutazioni. La fitness può migliorare, peggiorare o rimanere invariata. Essendo una piccola perturbazione, la fitness non cambia drasticamente, ma rimane nell'intorno del valore originale.
@@ -105,7 +104,7 @@ Esistono altri tipi di crossover per matrici in cui, ad esempio, si considerano 
 Tuttavia la rappresentazione che è stata scelta permette di utilizzare la prima versione, più semplice, che inoltre continua a garantire la presenza di una sola regina per riga.
 
 <div class="row mt-3">
-    {% include figure.liquid loading="eager" path="/assets/gif/gen_alg_eight_queens/QueenCrossover_ManimCE_v0.18.1.gif" class="img-fluid rounded z-depth-1" %}
+    <img src="{{ '/assets/gif/gen_alg_eight_queens/QueenCrossover_ManimCE_v0.18.1.gif' | relative_url }}" alt="Queen crossover" style="width: 100%; border-radius: 4px;">
 </div>
 <div class="caption" style="font-size: 18px; font-style: italic;">
     Un crossover tra due scacchiere. Il numero di righe selezionate è arbitrario, e può essere fino a N-1 (N in questo caso è 8).
