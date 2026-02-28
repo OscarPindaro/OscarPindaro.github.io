@@ -21,9 +21,9 @@
 title: Oscar Pindaro
 email: oscar.pindaro@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Mega blog super pazzo in cui scrivo quello che voglio
+  Blog frescosello in cui si parla di AI, Giochi di Ruolo, Software e roba a cui penso ogni tanto a caso.
 baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://oscarpindaro.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  OscarPindaro
 
 
