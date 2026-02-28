@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e  # Exit on error
-
 # Check if rbenv is installed
 if ! command -v rbenv &> /dev/null; then
     echo "❌ Error: rbenv is not installed."
@@ -10,17 +9,21 @@ if ! command -v rbenv &> /dev/null; then
     echo "  source ~/.bashrc"
     exit 1
 fi
-
+# Check if ruby-build plugin is installed (provides 'rbenv install')
+if ! rbenv commands | grep -q "^install$"; then
+    echo "Installing ruby-build plugin..."
+    git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+else
+    echo "✓ ruby-build plugin is already installed"
+fi
 # Check if .ruby-version exists
 if [ ! -f ".ruby-version" ]; then
     echo "❌ Error: .ruby-version file not found in project directory."
     exit 1
 fi
-
 # Read required Ruby version
 REQUIRED_RUBY=$(cat .ruby-version)
 echo "Required Ruby version: $REQUIRED_RUBY"
-
 # Check if required Ruby version is installed
 if ! rbenv versions | grep -q "$REQUIRED_RUBY"; then
     echo "Installing Ruby $REQUIRED_RUBY..."
@@ -28,11 +31,9 @@ if ! rbenv versions | grep -q "$REQUIRED_RUBY"; then
 else
     echo "✓ Ruby $REQUIRED_RUBY is already installed"
 fi
-
 # Set local Ruby version
 echo "Setting local Ruby version to $REQUIRED_RUBY..."
 rbenv local "$REQUIRED_RUBY"
-
 # Verify active Ruby version
 ACTIVE_RUBY=$(rbenv version | awk '{print $1}')
 if [ "$ACTIVE_RUBY" != "$REQUIRED_RUBY" ]; then
@@ -41,7 +42,6 @@ if [ "$ACTIVE_RUBY" != "$REQUIRED_RUBY" ]; then
     exit 1
 fi
 echo "✓ Ruby $REQUIRED_RUBY is active"
-
 # Check if cargo is installed
 if ! command -v cargo &> /dev/null; then
     echo "Installing cargo (Rust package manager)..."
@@ -49,7 +49,6 @@ if ! command -v cargo &> /dev/null; then
 else
     echo "✓ cargo is already installed"
 fi
-
 # Check if lychee is installed
 if ! command -v lychee &> /dev/null; then
     echo "Installing lychee link checker..."
@@ -59,34 +58,27 @@ if ! command -v lychee &> /dev/null; then
 else
     echo "✓ lychee is already installed"
 fi
-
 # Create virtual environment if it doesn't exist
 if [ ! -d ".venv" ]; then
     echo "Creating virtual environment in .venv..."
     python3 -m venv .venv
 fi
-
 # Installing dependencies
 echo "Installing system dependencies..."
 sudo dnf install -y ImageMagick
-
 # Activate virtual environment
 echo "Activating virtual environment..."
 source .venv/bin/activate
-
 # Install pre-commit
 echo "Installing pre-commit..."
 pip install --upgrade pip
 pip install pre-commit
-
 # Make the hook executable
 echo "Making hook script executable..."
 chmod +x hooks/jekyll-tabs-formatter.py
-
 # Install pre-commit hooks
 echo "Installing pre-commit hooks..."
 pre-commit install
-
 echo ""
 echo "✓ Setup complete!"
 echo ""
