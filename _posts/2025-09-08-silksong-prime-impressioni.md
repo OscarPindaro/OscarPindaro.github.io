@@ -6,7 +6,7 @@ description: Prime impressioni dopo 5 ore di gioco.
 tags: videogames
 categories: [videogames]
 featured: true
-thumbnail: /assets/img/silksong/silksong.png
+image: /assets/img/silksong/silksong.png
 ---
 
 L'annuncio della data di uscita di **Hollow Knight: Silksong** è stato di sicuro una bella sorpresa, e adesso finalmente ho potuto giocarci per circa 5 ore.

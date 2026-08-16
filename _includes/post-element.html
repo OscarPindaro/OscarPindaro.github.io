@@ -38,7 +38,7 @@
     </time>
   </div>
 
-  {%- if include.post.thumbnail -%}
-    <img src="{{ include.post.thumbnail | relative_url }}" alt="{{ include.post.title | escape }}">
+  {%- if include.post.image -%}
+    <img src="{{ include.post.image | relative_url }}" alt="{{ include.post.title | escape }}">
   {%- endif -%}
 </post-item>

@@ -6,7 +6,7 @@ description: Analisi del pattern di gioco della Vedova, per capire come mai è u
 tags: videogames game-design
 categories: [videogames, game design]
 featured: true
-thumbnail: /assets/img/silksong/vedova.png
+image: /assets/img/silksong/vedova.png
 ---
 
 A circa 8 ore di gioco ho preso l'artiglio e finalmente mi si è aperta la prima vera boss fight di Silksong.

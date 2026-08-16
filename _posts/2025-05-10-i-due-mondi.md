@@ -2,11 +2,11 @@
 layout: post
 title: I Due Mondi
 date: 2025-10-27 21:00:00
-description:
+description: Come i modelli mentali influenzano il nostro modo di vedere il mondo e perché è importante usarli criticamente
 tags: opinione
 categories: [opinione]
 featured: true
-thumbnail:
+image:
 ---
 
 Ho avuto modo, mio malgrado, di guardare spezzoni di interviste a RFK Jr su vaccini e diete detox. Inorridito, mi sono girato dall'altra parte, ma non potevo immaginare cosa mi aspettasse: un editoriale su come [Mark Zuckerberg abbia intenzione di creare "Amici AI" per curare l'epidemia di solitudine che sta attraversando il mondo](https://futurism.com/zuckerberg-lonely-friends-create-ai).

@@ -6,7 +6,7 @@ description: Un argomento che mi porta molto vicino al Luddismo e allo Jihad But
 tags: llm code satirico
 categories: [llm, code]
 featured: true
-thumbnail: /assets/img/dune/cover.png
+image: /assets/img/dune/cover.png
 ---
 
 Mi capita molto frequentemente di leggere e sentire opinioni alquanto fantasiose su sviluppo software e LLM. Opinioni con cui non sono mai particolarmente d'accordo.

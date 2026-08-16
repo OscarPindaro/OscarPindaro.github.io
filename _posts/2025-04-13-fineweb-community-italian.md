@@ -9,7 +9,7 @@ featured: true
 toc:
   sidebar: left
 tabs: true
-thumbnail: /assets/img/limone32_bordo_colorato.png
+image: /assets/img/limone32_bordo_colorato.png
 pretty_table: true
 related_publications: true
 summary: "Uno studio su Fineweb-C, il dataset per la community di HuggingFace che permette di avere dati di qualità in ogni lingua"

@@ -36,6 +36,7 @@ kramdown:
 theme: minima
 plugins:
   - jekyll-feed # geenrates the rss feed
+  - jekyll-seo-tag # generates og:image, og:description, og:title meta tags
   - jekyll-tabs # for generating tabs with different text in it
   - jekyll-imagemagick # for responsive images of different sizes
   - jekyll-redirect-from

@@ -2,11 +2,11 @@
 layout: post
 title: Root, Incendi, Guerre Civili e Crimini di Guerra
 date: 2025-10-05 9:00:00
-description:
+description: La mia esperienza come master nella prima sessione di Root, con un'analisi delle scelte narrative in una campagna di gioco di ruolo
 tags: game-design gdr scrittura
 categories: [game-design, gdr, scrittura]
 featured: true
-thumbnail: /assets/img/gdr/root_cover.jpg
+image: /assets/img/gdr/root_cover.jpg
 summary: Un paio di settimane fa ho finito la mia prima sessione one-shot con degli amici a **Root Il Gioco di Ruolo**.
 ---
 

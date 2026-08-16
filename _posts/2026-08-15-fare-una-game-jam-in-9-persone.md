@@ -2,11 +2,11 @@
 layout: post
 title: Fare una Game Jam in 9 persone
 date: 2026-08-15 12:00:00
-description:
+description: Come organizziamo il lavoro in team durante la GMTK Jam 2026 con 9 partecipanti per creare Dungeon Intern - Danse Macabre
 tags: [game-design]
 categories: [game-design]
 featured: true
-thumbnail: assets/img/gmtk_2026/cover_danse_macabre.png
+image: assets/img/gmtk_2026/cover_danse_macabre.png
 ---
 
 {% include figure.liquid

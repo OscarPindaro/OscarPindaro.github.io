@@ -2,11 +2,11 @@
 layout: post
 title: Anche se non siamo d'accordo, ti do il permesso di esistere
 date: 2025-09-22 19:00:00
-description:
+description: Come esprimere opinioni autentiche mantenendo il rispetto reciproco, anche quando non siamo d'accordo
 tags: opinione
 categories: [opinione]
 featured: true
-thumbnail: /assets/img/opinioni/falcon_punch.png
+image: /assets/img/opinioni/falcon_punch.png
 ---
 
 Non so se vi è mai capitato di esprimere un'opinione su qualcosa, su un argomento più o meno triviale, e di ricevere come commento "eh ma ognuno fa quello che vuole".

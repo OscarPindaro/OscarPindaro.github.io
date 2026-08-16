@@ -182,6 +182,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.12)
   jekyll-imagemagick
   jekyll-redirect-from
+  jekyll-seo-tag (~> 2.8)
   jekyll-tabs
   kramdown-math-katex (~> 1.0)
   minima (~> 2.5)
