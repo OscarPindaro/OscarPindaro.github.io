@@ -103,7 +103,7 @@ if [ ! -d ".venv" ]; then
 fi
 # Installing dependencies
 echo "Installing system dependencies..."
-sudo dnf install -y ImageMagick
+sudo dnf install -y ImageMagick aspell
 # Activate virtual environment
 echo "Activating virtual environment..."
 source .venv/bin/activate

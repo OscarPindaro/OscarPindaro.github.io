@@ -5,10 +5,14 @@
   {% if include.slot %}
     slot='{{ include.slot }}'
   {% endif %}
-  {% if include.center %}
-    style='text-align: center; max-width: fit-content; margin-left: auto; margin-right: auto;'
-  {% else %}
-    style='max-width: fit-content;'
+  {% if include.constrain %}
+    {% if include.center %}
+      style='text-align: center; max-width: fit-content; margin-left: auto; margin-right: auto;'
+    {% else %}
+      style='max-width: fit-content;'
+    {% endif %}
+  {% elsif include.center %}
+    style='text-align: center;'
   {% endif %}
 >
  <picture>
