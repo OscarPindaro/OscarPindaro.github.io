@@ -13,4 +13,18 @@
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a').forEach(link => {
+        if (link.getAttribute('target')) return;
+        const href = link.getAttribute('href');
+        if (!href) return;
+        const isExternal = href.startsWith('http') && !href.includes(window.location.hostname);
+        if (isExternal) {
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        }
+      });
+    });
+  </script>
 </head>
