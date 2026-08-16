@@ -58,6 +58,19 @@ if ! command -v lychee &> /dev/null; then
 else
     echo "✓ lychee is already installed"
 fi
+# Add cargo bin to fish shell PATH if not already present
+FISH_CONFIG="$HOME/.config/fish/config.fish"
+if [ -f "$FISH_CONFIG" ]; then
+    if ! grep -q "\.cargo/bin" "$FISH_CONFIG"; then
+        echo "Adding cargo bin to fish shell PATH..."
+        echo 'set -gx PATH $HOME/.cargo/bin $PATH' >> "$FISH_CONFIG"
+        echo "✓ Added to fish config"
+    else
+        echo "✓ cargo bin already in fish PATH"
+    fi
+else
+    echo "Fish config not found, skipping fish PATH configuration"
+fi
 # Create virtual environment if it doesn't exist
 if [ ! -d ".venv" ]; then
     echo "Creating virtual environment in .venv..."
