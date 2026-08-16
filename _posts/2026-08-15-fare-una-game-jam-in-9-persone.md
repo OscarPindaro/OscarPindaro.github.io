@@ -53,6 +53,10 @@ Questa attività per sua natura attira su di se un po' di sgrunt e grr, ma è ne
 
 Per viverla bene, bisogna interiorizzare <un po' preachy> il fatto che queste scelte non sono così rilevanti: il gioco verrà prodotto in due giorni, messo insieme con la colla e lo sputo, e in totale verranno prodotte forse un migliaio di righe di codice. Seguendo un po' la [legge di Conway](https://en.wikipedia.org/wiki/Conway%27s_law), tendo fare la progettazione che meglio rispecchia le relazioni di comunicazione tra i diversi implementatori, visto che il tempo passato a comunicare e integrare è molto più alto di quello passato a scrivere codice.
 
+{% include figure.liquid path="assets/img/gmtk_2026/manhole_wave_10col.gif" alt="Goblin entering and exiting manhole" center=true     caption="Wiiiiiiiiiii!!!"
+  %}
+
+
 Il resto delle mie attività consiste nel mettere a posto merge conflict, fare un po' da riferimento per i prossimi passi implementativi (alla fine, finisce che detengo nella mia testolina gran parte della struttura dell'applicazione), e vagare un po' tra i tavoli quando mi rompo le palle.
 
 Questo ruolo ha delle caratteristiche paradossali: nonostante detenessi <tempi verbali strani> nelle mie mani molte delle decisioni tecniche, mi manca il senso di possedere quello che ho prodotto. Guidare il design dell'applicazione non mi da questa sensazione, perchè il lavoro è spezzettato da tanti piccoli micro-task. E' anche la sagra del compromesso, un continuo provar a far combaciare cose, adattare le implementazioni alla meno peggio per evitare che lo sviluppo si blocchi, discutere continuomanete sul fatto che non ti sei adattato abbastanza, e così via.
@@ -97,17 +101,25 @@ Un buon punto contro questa visione è dire: "Beh, sto facendo un gioco, potrò 
 Parlerà ovviamente del mio punto di vista.
 Di me dovete sapere che ho usato 25 ore [Aseprite](https://www.aseprite.org/) per disgnare un paio di lanterne e un limone. Inoltre, non ho nessun tipo di formazione artistica, e scuole elementari e media hanno fallito alla grande nell'insegnarmi qualcosa.
 
+{% include figure.liquid path="assets/img/gmtk_2026/panchina.png" alt="Panchina" center=true width="200px" caption="La panchina originale, purtroppo non è riuscita a vedere la luce del sole." caption_width="600px" %}
+
 E' evidente che non sono nemmeno considerabile un amatoriale.
 La parte interessante di cui parlare è quindi non tanto come ho disegnato (cercare reference, implorare l'aiuto dell'artista, etc), ma è stato dover affrontare tutta una serie di insicurezze: cavolo, sta panchina ha una forma strana; ommioddio sti colori fanno schifo; aspetta un attimo... ma rischio che il mio lavoro non venga inserito nel gioco finale???
 
+{% include figure.liquid path="assets/img/gmtk_2026/hydrant.png" alt="Idrante" center=true width="150px" caption="Al momento della scrittura, mi sembra più un palo con un cappello da cowboy, o un pisello." caption_width="600px" %}
+
 Detto questo, in qualche maniera, e grazie all'aiuto degli altri, sono riuscito a produrre ben quattro sprite
-<images>
-Far vedere le quattro immagini, scalate nearest nebour.
-< panchina > < idrante >
-< autobus  > < cancello>
-</images>
+
+{% include figure.liquid path="assets/img/gmtk_2026/casa1.png" alt="Casa" center=true width="180px" caption="Palette copiata barbaramente dalla mia fonte di ispirazione. Purtroppo la casa risulta molto piatta." caption_width="600px" %}
 
 Alla fine, i colori della panchina sono stati cambiati da un altro perchè cozzavano troppo con il resto dello stile, l'idrante sono stati ritoccati i colori, l'autobus è arrivato intero, anche se un'ora su due ho co-disegnato, e infine il cancello è arrivato intero nel gioco!
+
+{% include figure.liquid path="assets/img/gmtk_2026/autobus.gif" alt="Autobus" center=true width="240px" caption="La prospettiva dei nostri giochi ti permette di vedere il sopra e il lato. Ho avuto bisogno di un aiuto esterno per capire come fare il tetto." caption_width="600px" %}
+
+La cosa piacevole è comunque vedere questa progressione in cui il primo sprite è stato praticamente buttato mentre l'ultimo è stato tenuto nella sua interezza: evidentemente qualcosa ho imparato, ma penso che sia anche perchè piano piano ho capito come dovevo integrarmi con il resto dello stile.
+Mannaggia a te Vittorio che non mi molli le palette!!!
+
+{% include figure.liquid path="assets/img/gmtk_2026/gate.gif" alt="Cancello" center=true width="200px" caption="Sono molto fiero di questo"%}
 
 La cosa piacevole è comunque vedere questa progressione in cui il primo sprite è stato praticamente buttato mentre l'ultimo è stato tenuto nella sua interezza: evidentemente qualcosa ho imparato, ma penso che sia anche perchè piano piano ho capito come dovevo integrarmi con il resto dello stile.
 Mannaggia a te Vittorio che non mi molli le palette!!!
