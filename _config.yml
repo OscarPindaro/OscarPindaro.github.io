@@ -41,7 +41,7 @@ plugins:
   - jekyll-redirect-from
 
 imagemagick:
-  enabled: false# enables responsive images for your site (recommended, see https://github.com/alshedivat/al-folio/issues/537)
+  enabled: true # enables responsive images for your site (recommended, see https://github.com/alshedivat/al-folio/issues/537)
   widths:
     - 480
     - 800
@@ -57,6 +57,8 @@ imagemagick:
     # - '.gif'
   output_formats:
     webp: '-quality 85'
+  skip_files:
+    - '*.gif'
 
 
 # this loads the images only when they are met while scrolling

@@ -9,6 +9,13 @@ featured: true
 thumbnail: assets/img/gmtk_2026/cover_danse_macabre.png
 ---
 
+{% include figure.liquid
+    loading="eager"
+    path="/assets/img/gmtk_2026/title.gif"
+    class="img-fluid rounded z-depth-1"
+    caption="Title screen animation"
+%}
+
 Anche quest'anno la [Wauhaus](https://wauhaus.itch.io/), il gruppo di cui faccio parte, ha partecipato alla GMTK Jam.
 Il tema era **Count Down**: molto interessante, ma lo ho trovato più debole rispeto ai temi passati.
 
