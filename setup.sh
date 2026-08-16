@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e  # Exit on error
+# Initialize rbenv for this session
+if command -v rbenv &> /dev/null; then
+    eval "$(rbenv init - bash)"
+fi
 # Check if rbenv is installed
 if ! command -v rbenv &> /dev/null; then
     echo "❌ Error: rbenv is not installed."
@@ -42,6 +46,20 @@ if [ "$ACTIVE_RUBY" != "$REQUIRED_RUBY" ]; then
     exit 1
 fi
 echo "✓ Ruby $REQUIRED_RUBY is active"
+# Install bundler if not already installed
+if ! command -v bundle &> /dev/null; then
+    echo "Installing bundler..."
+    gem install bundler
+else
+    echo "✓ bundler is already installed"
+fi
+# Install gems from Gemfile if it exists
+if [ -f "Gemfile" ]; then
+    echo "Installing gems from Gemfile..."
+    bundle install
+else
+    echo "No Gemfile found, skipping bundle install"
+fi
 # Check if cargo is installed
 if ! command -v cargo &> /dev/null; then
     echo "Installing cargo (Rust package manager)..."
@@ -67,6 +85,13 @@ if [ -f "$FISH_CONFIG" ]; then
         echo "✓ Added to fish config"
     else
         echo "✓ cargo bin already in fish PATH"
+    fi
+    if ! grep -q "rbenv init" "$FISH_CONFIG"; then
+        echo "Adding rbenv init to fish shell..."
+        echo 'status --is-interactive; and source (rbenv init - fish|psub)' >> "$FISH_CONFIG"
+        echo "✓ Added rbenv init to fish config"
+    else
+        echo "✓ rbenv init already in fish config"
     fi
 else
     echo "Fish config not found, skipping fish PATH configuration"
