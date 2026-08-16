@@ -1,15 +1,13 @@
 ---
 layout: post
-title: Anche se non siamo d'accordo, ti do il permesso di esistere
-date: 2025-09-22 19:00:00
+title: Fare una Game Jam in 9 persone
+date: 2026-08-15 12:00:00
 description:
-tags: opinione
-categories: [opinione]
+tags: [game-design]
+categories: [game-design]
 featured: true
-thumbnail: /assets/img/opinioni/falcon_punch.png
+thumbnail: assets/img/gmtk_2026/cover_danse_macabre.png
 ---
-
-# Fare una gam in 9 persone
 
 Anche quest'anno la [Wauhaus](https://wauhaus.itch.io/), il gruppo di cui faccio parte, ha partecipato alla GMTK Jam.
 Il tema era **Count Down**: molto interessante, ma lo ho trovato più debole rispeto ai temi passati.
