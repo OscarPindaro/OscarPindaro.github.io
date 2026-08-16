@@ -29,9 +29,11 @@ Oggi prendo l'occasione per parlare di come organizziamo il nostro lavoro, visto
 
 ## Il reclutamento
 
+{% two_column image_path:"/assets/img/gmtk_2026/lightning.gif" pixelated:true %}
 Mi piace pensare a questa parte come la prima metà dei "Blues Brothers", ma molto meno figo. Viene imbastito un sondaggio in un gruppo telegram, ci si incontra per chi può due settimane prima per discutere un po' sulle nostre speranze e desideri, e poi si cerca una casa in cui poter ficcare 9 persone.
 Questa parte è abbastanza semplice, visto che non ci sono grandi decisioni da prendere.
-E' stata durante questa fase che ho iniziato a pensare di programmare meno e fare da supporto al nostro artista.
+E' stata durante questa fase che ho iniziato a pensare a programmare meno e fare da supporto al nostro artista.
+{% endtwo_column %}
 
 ### Identificare il  proprio ruolo
 Metà di noi si sono conosciuti all'università, ed ecco quindi la distribuzione delle skill del nostro team:

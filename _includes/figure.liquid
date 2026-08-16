@@ -42,7 +42,7 @@
       {% else %}
         height='auto'
       {% endif %}
-      {% if include['min-width'] or include['min-height'] or include['max-width'] or include['max-height'] %}
+      {% if include['min-width'] or include['min-height'] or include['max-width'] or include['max-height'] or is_gif %}
         style='
           {% if include['min-width'] %}
             min-width: {{ include.min-width }};
@@ -56,7 +56,12 @@
           {% if include['max-height'] %}
             max-height: {{ include.max-height }};
           {% endif %}
+          {% if is_gif %}
+            image-rendering: pixelated;
+          {% endif %}
         '
+      {% elsif is_gif %}
+        style='image-rendering: pixelated;'
       {% endif %}
       {% if include.alt %}
         alt='{{ include.alt }}'
